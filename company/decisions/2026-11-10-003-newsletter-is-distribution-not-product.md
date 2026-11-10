@@ -25,3 +25,7 @@ discovery through recommendations and Notes.
 ## Guardrails
 At most one post a week, distilled from decisions and board memos. No post in a week where
 nothing real happened. Review after 8 posts (see strategy kill criteria).
+
+## Kill criteria
+After Substack post 8, at least 150 subscribers. If missed, drop posts to monthly
+(see [strategy](../strategy.md)).

@@ -1,5 +1,5 @@
 ---
-name: Ask for the investor
+name: Ask the investor
 about: A concrete action only the investor can do (accounts, payments, publishing)
 labels: needs-investor
 ---
