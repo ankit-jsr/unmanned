@@ -1,0 +1,17 @@
+{
+  "skill": "skill-name",
+  "cases": [
+    {
+      "id": "c1-happy-path",
+      "prompt": "A realistic request from the target professional.",
+      "input_files": [],
+      "checks": ["A plain-language assertion a grader can mark true or false."]
+    },
+    {
+      "id": "c2-missing-input",
+      "prompt": "The same request with a key input missing.",
+      "input_files": [],
+      "checks": ["Asks for the missing input instead of inventing it."]
+    }
+  ]
+}

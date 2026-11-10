@@ -1,0 +1,35 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Read-only token; no secrets are used, so forked PRs are safe to run.
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: Gate 1a - secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks
+        run: |
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz \
+            | tar -xz gitleaks
+      - name: Scan full history
+        run: ./gitleaks detect --source . --redact --verbose
+
+  content:
+    name: Gate 1b - content checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 scripts/check_content.py

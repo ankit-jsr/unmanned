@@ -1,0 +1,17 @@
+# Secrets and local config: never committed
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Paid product never lives here
+private/
+kits/
+
+# Local noise
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/
+.venv/

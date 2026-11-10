@@ -1,0 +1,9 @@
+key,value,source
+budget_committed,"₹12,500",company/ledger.csv
+spend_to_date,₹0,company/ledger.csv
+revenue_to_date,₹0,company/ledger.csv
+reviewer_cap_monthly,"₹1,000",company/strategy.md
+substack_subscribers,0,company/metrics.csv
+github_stars,0,company/metrics.csv
+preorder_price,$29,company/strategy.md
+repo_url,https://github.com/unmanned-hq/unmanned,setup
