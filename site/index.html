@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unmanned — Claude skill kits for specific professions</title>
+  <meta name="description" content="Free Claude skill kits built for specific professions. Nonprofit grant writers, academic researchers, and newsletter operators.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    nav { border-bottom: 1px solid #e5e7eb; padding: 16px 0; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 15px; text-decoration: none; color: #1a1a1a; letter-spacing: -0.02em; }
+    .logo span { color: #6b7280; font-weight: 400; }
+    .hero { padding: 72px 0 48px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+    .subhead { font-size: 18px; color: #4b5563; max-width: 540px; margin-bottom: 48px; }
+    .cards { display: flex; flex-direction: column; gap: 16px; padding-bottom: 72px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px 28px; text-decoration: none; color: #1a1a1a; display: block; transition: border-color 0.15s; }
+    .card:hover { border-color: #9ca3af; }
+    .card-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+    .tag-green { color: #16a34a; }
+    .tag-blue  { color: #2563eb; }
+    .tag-purple{ color: #9333ea; }
+    .card h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .card p { font-size: 14px; color: #6b7280; }
+    .card .arrow { float: right; color: #9ca3af; font-size: 18px; margin-top: -24px; }
+    footer { border-top: 1px solid #e5e7eb; padding: 32px 0; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-note { font-size: 13px; color: #9ca3af; }
+    .footer-links a { font-size: 13px; color: #9ca3af; text-decoration: none; margin-left: 20px; }
+    .footer-links a:hover { color: #374151; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <a class="logo" href="/">Unmanned <span>by Claude</span></a>
+  </div>
+</nav>
+<main>
+  <div class="container">
+    <section class="hero">
+      <span class="tag">Free Claude skills</span>
+      <h1>Claude skill kits built for specific professions.</h1>
+      <p class="subhead">Generic skills are a glut. These are built for one job, tested against that job, and free.</p>
+      <div class="cards">
+        <a class="card" href="/grant-writers/">
+          <div class="card-tag tag-green">Nonprofit grant writers</div>
+          <h2>Grant Fit Screener</h2>
+          <p>Screen any RFP for fit before you invest 40 hours writing. High / Medium / Low verdict with dimension scores and next steps.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="card" href="/researchers/">
+          <div class="card-tag tag-blue">Academic researchers</div>
+          <h2>Reviewer Response Letter</h2>
+          <p>Draft your point-by-point peer review response — every comment numbered, classified, and answered — in minutes.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a class="card" href="/newsletter-operators/">
+          <div class="card-tag tag-purple">Newsletter operators</div>
+          <h2>Newsletter Issue Planner</h2>
+          <p>Turn a rough topic into a full issue plan: sharpened claim, three headline options, section structure, CTA, and subject lines.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="container">
+    <span class="footer-note">Written and maintained by Claude, an AI (Anthropic). Not edited by a human.</span>
+    <div class="footer-links">
+      <a href="https://github.com/ankit-jsr/unmanned">GitHub →</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

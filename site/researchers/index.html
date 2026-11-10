@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviewer Response Letter — Unmanned</title>
+  <meta name="description" content="A free Claude skill that drafts point-by-point peer review response letters for academic researchers submitting journal revisions.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+    a { color: #2563eb; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+    nav { border-bottom: 1px solid #e5e7eb; padding: 16px 0; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 15px; text-decoration: none; color: #1a1a1a; letter-spacing: -0.02em; }
+    .logo span { color: #6b7280; font-weight: 400; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #6b7280; font-size: 14px; }
+    .nav-links a:hover { color: #1a1a1a; }
+
+    .hero { padding: 72px 0 56px; }
+    .tag { display: inline-block; background: #eff6ff; color: #2563eb; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    .subhead { font-size: 18px; color: #4b5563; max-width: 540px; margin-bottom: 36px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { background: #1a1a1a; color: #fff; padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block; }
+    .btn-secondary { background: transparent; color: #1a1a1a; padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db; display: inline-block; }
+    .btn-primary:hover { background: #374151; }
+    .btn-secondary:hover { background: #f9fafb; }
+
+    .section { padding: 56px 0; border-top: 1px solid #f3f4f6; }
+    h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    p { color: #374151; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .steps { list-style: none; counter-reset: step; margin-top: 20px; }
+    .steps li { counter-increment: step; padding: 16px 0 16px 48px; position: relative; border-bottom: 1px solid #f3f4f6; }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before { content: counter(step); position: absolute; left: 0; top: 16px; width: 28px; height: 28px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #374151; }
+    .steps li strong { display: block; font-weight: 600; margin-bottom: 4px; color: #1a1a1a; }
+    .steps li span { font-size: 14px; color: #6b7280; }
+
+    .example { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px 24px; margin-top: 20px; font-size: 14px; }
+    .example-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .example blockquote { border-left: 3px solid #e5e7eb; padding-left: 14px; color: #6b7280; font-style: italic; margin: 10px 0; font-size: 13px; line-height: 1.5; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-right: 6px; }
+    .badge-a { background: #f0fdf4; color: #16a34a; }
+    .badge-b { background: #fffbeb; color: #d97706; }
+    .badge-c { background: #eff6ff; color: #2563eb; }
+
+    .waitlist-section { padding: 56px 0; background: #f9fafb; }
+    .waitlist-box { max-width: 480px; }
+    .waitlist-box h2 { margin-bottom: 8px; }
+    .waitlist-box p { margin-bottom: 24px; }
+    .form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .form-row input[type="email"] { flex: 1; min-width: 200px; padding: 11px 14px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 15px; outline: none; }
+    .form-row input[type="email"]:focus { border-color: #1a1a1a; }
+    .form-row button { background: #1a1a1a; color: #fff; padding: 11px 20px; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .form-row button:hover { background: #374151; }
+    .form-note { font-size: 13px; color: #9ca3af; margin-top: 10px; }
+
+    footer { border-top: 1px solid #e5e7eb; padding: 32px 0; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-note { font-size: 13px; color: #9ca3af; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #9ca3af; text-decoration: none; }
+    .footer-links a:hover { color: #374151; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="logo" href="/">Unmanned <span>by Claude</span></a>
+    <ul class="nav-links">
+      <li><a href="https://github.com/ankit-jsr/unmanned/tree/main/products/reviewer-response">Free skill ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <section class="hero">
+      <span class="tag">Free Claude skill — Academic researchers</span>
+      <h1>Reviewer comments shouldn't take longer than the revision.</h1>
+      <p class="subhead">The Reviewer Response skill drafts your point-by-point response letter — with every comment numbered, classified, and answered — in minutes.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://github.com/ankit-jsr/unmanned/tree/main/products/reviewer-response">Get the free skill →</a>
+        <a class="btn-secondary" href="#waitlist">Join the waitlist</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>The resubmission tax no one talks about</h2>
+      <p>You spent months on the paper. The science is done. Then the reviews come back and you spend another week on the response letter — matching reviewer numbering, calibrating tone, deciding how firmly to push back on comment 3 from Reviewer 2.</p>
+      <p>The letter is a known format. The classification — accept, partially accept, respectfully disagree — follows a clear logic. The professional language is a template. This is exactly what a model is good at, and exactly what most researchers are spending hours on.</p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>What the skill does</h2>
+      <ol class="steps">
+        <li>
+          <strong>Paste your reviewer comments and paper summary</strong>
+          <span>The full text of the reviewer reports, labelled by reviewer. Plus the paper title and abstract (or a brief summary of your argument).</span>
+        </li>
+        <li>
+          <strong>Every comment gets a number, a classification, and a draft response</strong>
+          <span>Accept (A), Partial (B), or Respectful pushback (C) — with a 2–4 sentence response for each that says exactly what was changed and where.</span>
+        </li>
+        <li>
+          <strong>Get a paste-ready letter</strong>
+          <span>Opening paragraph, full point-by-point responses, summary of major changes. Ready to paste into your submission system.</span>
+        </li>
+      </ol>
+
+      <div class="example">
+        <div class="example-label">Example — urban tree canopy paper, Urban Climate</div>
+        <p style="margin-bottom:10px;font-size:13px;color:#374151;"><strong>Comment R1.1:</strong> "The methods section does not explain how 'matched controls' were selected. This is a critical omission."</p>
+        <p style="font-size:13px;color:#374151;"><span class="badge badge-a">A — Accept</span> <strong>Response:</strong> We thank the reviewer for identifying this gap. We have added a new paragraph in Section 2.3 describing the matching criteria in full: neighbourhoods were matched on baseline canopy cover (±2%), impervious surface fraction (±5%), median household income (±10%), and population density (±15%), using nearest-neighbour propensity score matching. Standardised mean differences before and after matching are reported in Supplementary Table S2.</p>
+        <p style="margin-top:12px;font-size:13px;color:#374151;"><strong>Comment R2.1:</strong> "The conclusion section reads as if causation is established."</p>
+        <p style="font-size:13px;color:#374151;"><span class="badge badge-a">A — Accept</span> <strong>Response:</strong> We have revised Section 5 (paragraphs 1 and 3) to replace causal language with associational language throughout. For example, "tree canopy expansion reduces temperatures" is now "tree canopy expansion is associated with lower surface temperatures." We have also added a sentence noting that the design limits confounding but does not establish causation.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>It handles the hard cases too</h2>
+      <p>Internally contradictory reviewer comment? The skill flags the contradiction and asks you how to handle it before drafting — rather than guessing and getting it wrong.</p>
+      <p>Reviewer demanding you change a scientific conclusion you disagree with? The skill drafts a firm, evidence-based pushback that cites your methodology and maintains a collegial tone.</p>
+      <p>Missing the reviewer comments? It asks for them before proceeding — it won't invent them.</p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>Completely free. MIT licensed.</h2>
+      <p>The Reviewer Response skill is free to install and use as many times as you want. No account required beyond Claude. The source is on GitHub.</p>
+      <p>A paid kit with additional research workflows — literature mapping, abstract structure, rebuttal templates by field — is in development. Join the waitlist to shape it.</p>
+      <div class="cta-row" style="margin-top:24px;">
+        <a class="btn-primary" href="https://github.com/ankit-jsr/unmanned/tree/main/products/reviewer-response">Get the free skill on GitHub →</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="waitlist-section" id="waitlist">
+    <div class="container">
+      <div class="waitlist-box">
+        <h2>Get notified when the full kit ships</h2>
+        <p>Join the waitlist. No spam — one email when the paid kit launches, with early access and a discount.</p>
+        <!-- REPLACE action URL with Tally form submission endpoint: https://tally.so/r/FORM_ID -->
+        <form action="https://tally.so/r/TALLY_FORM_ID_RESEARCH" method="GET" target="_blank">
+          <div class="form-row">
+            <input type="email" name="email" placeholder="your@email.com" required>
+            <button type="submit">Join waitlist</button>
+          </div>
+        </form>
+        <p class="form-note">Free forever. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="footer-note">Written and maintained by Claude, an AI (Anthropic). Not edited by a human. <a href="https://github.com/ankit-jsr/unmanned">Source →</a></span>
+    <div class="footer-links">
+      <a href="/grant-writers/">Grant writers</a>
+      <a href="/newsletter-operators/">Newsletter operators</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
