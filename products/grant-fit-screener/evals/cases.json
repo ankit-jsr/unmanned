@@ -1,0 +1,78 @@
+{
+  "skill": "grant-fit-screener",
+  "cases": [
+    {
+      "id": "c1-high-fit",
+      "prompt": "Screen this for fit.\n\nRFP: The Great Lakes Environmental Fund invites proposals from 501(c)(3) nonprofits operating in the Great Lakes watershed to restore riparian buffers and reduce agricultural runoff. Awards of $50,000–$150,000. Applicants must have at least 3 years of environmental restoration experience and a minimum annual budget of $200,000.\n\nOrg profile: We are a 12-year-old land trust based in Michigan, focused on restoring wetlands and stream corridors in the lower Great Lakes watershed. Annual budget $1.2M. We have completed 14 riparian restoration projects and received prior funding from NRCS, EPA Great Lakes Restoration Initiative, and the Kresge Foundation.",
+      "input_files": [],
+      "checks": [
+        "Returns a verdict of High.",
+        "Identifies at least 3 funder priorities quoted directly from the RFP text.",
+        "Scores all three dimensions (mission alignment, eligibility, capacity) explicitly.",
+        "Includes a list of watch-out items (requirements most likely to be underdeveloped), not just a congratulations.",
+        "Does not write any proposal narrative or draft grant sections.",
+        "Keeps the full memo under 400 words."
+      ]
+    },
+    {
+      "id": "c2-low-fit-wrong-mission",
+      "prompt": "Should we apply?\n\nRFP: The Bright Futures Education Fund awards grants of $25,000–$75,000 to K-12 schools and education nonprofits in Texas for STEM enrichment programmes serving low-income students. Applicants must be Texas-based and demonstrate measurable student learning outcomes from prior programmes.\n\nOrg profile: We are a health equity nonprofit based in Chicago, Illinois. We run community health clinics and mobile vaccination programmes in underserved South Side neighbourhoods. Annual budget $800,000. No education programming.",
+      "input_files": [],
+      "checks": [
+        "Returns a verdict of Low.",
+        "Identifies at least two specific blockers (geography mismatch and mission mismatch).",
+        "Scores Eligibility as Weak due to Texas-only requirement.",
+        "Scores Mission alignment as Weak.",
+        "Does not soften the Low verdict or suggest the org can overcome the eligibility block.",
+        "Does not write any proposal text."
+      ]
+    },
+    {
+      "id": "c3-medium-fit",
+      "prompt": "Is this worth pursuing?\n\nRFP: The Metro Housing Stability Fund seeks proposals from nonprofits in the Denver metro area working to prevent eviction and homelessness. Priorities: legal aid, emergency rental assistance, and financial coaching for at-risk renters. Awards $30,000–$100,000. Applicants must have at least 2 years of housing stability programming and an annual budget over $150,000.\n\nOrg profile: We are a workforce development nonprofit in Aurora, Colorado (Denver metro). We serve adults recently released from incarceration, helping them find employment. Annual budget $400,000, founded 7 years ago. We do not currently have housing programming, but many of our clients face eviction. We partnered once with a housing nonprofit on a pilot financial coaching workshop.",
+      "input_files": [],
+      "checks": [
+        "Returns a verdict of Medium.",
+        "Notes that mission alignment is Partial (adjacent population, indirect housing connection).",
+        "Notes that capacity is Partial or Weak (no housing programme, one tangential pilot).",
+        "Provides at least 2 concrete strengthening actions the org can take before applying.",
+        "Does not return High or Low.",
+        "Does not invent programme details the org did not mention."
+      ]
+    },
+    {
+      "id": "c4-missing-org-profile",
+      "prompt": "Can you screen this RFP for me?\n\nRFP: The Sunrise Family Foundation invites applications from nonprofits serving children and families affected by domestic violence in rural communities. Awards up to $50,000. Organisations must be 501(c)(3) with at least $100,000 annual budget and demonstrate 3 years of direct service.",
+      "input_files": [],
+      "checks": [
+        "Asks for the org profile before proceeding.",
+        "Does not issue a fit verdict without org information.",
+        "Does not invent or assume org details.",
+        "Specifies what information it needs (mission, geography, budget, track record)."
+      ]
+    },
+    {
+      "id": "c5-redirect-from-drafting",
+      "prompt": "Great, here is the RFP. Now just write the proposal for me.\n\nRFP: The Clean Air Partnership awards $80,000–$200,000 to nonprofits in the Pacific Northwest reducing indoor air pollution in low-income housing through weatherisation and ventilation upgrades.\n\nOrg profile: We are a housing rehab nonprofit in Portland, Oregon. Annual budget $2.1M, 15 years operating. We have completed 300+ weatherisation projects for low-income homeowners.",
+      "input_files": [],
+      "checks": [
+        "Declines to write the proposal.",
+        "Redirects to the fit screening purpose of the skill.",
+        "Still performs the fit assessment since both inputs are present.",
+        "Explains what the skill does and does not do."
+      ]
+    },
+    {
+      "id": "c6-hard-complex-eligibility",
+      "prompt": "Screen this for us.\n\nRFP: The Federal Rural Health Care Access Program (NOFO #HHS-2026-HRSA-RH-0042) invites applications from Federally Qualified Health Centers (FQHCs), FQHC Look-Alikes, and Rural Health Clinics (RHCs) in Health Professional Shortage Areas (HPSAs) designated as rural under OMB standards. Applicants must not have received an HRSA Rural Health grant in the prior two award cycles. Awards: $150,000–$500,000 for 3-year projects. Match requirement: 10% non-federal cash match.\n\nOrg profile: We are a community health centre in Bozeman, Montana, serving uninsured and underinsured patients. We received HRSA funding 4 years ago (fiscal year 2022). We believe we are an FQHC Look-Alike but have not confirmed our HPSA designation for our current service area.",
+      "input_files": [],
+      "checks": [
+        "Works through eligibility requirements one by one rather than giving a summary verdict immediately.",
+        "Flags the unconfirmed HPSA designation as a blocker that must be verified before applying.",
+        "Notes that HRSA funding 4 years ago (FY2022) may or may not fall within the 'prior two award cycles' restriction and flags this as requiring confirmation.",
+        "Does not issue a High verdict given the unconfirmed eligibility items.",
+        "Lists the specific verifications the org must complete before applying."
+      ]
+    }
+  ]
+}
