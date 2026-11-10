@@ -1,0 +1,83 @@
+{
+  "skill": "newsletter-issue-planner",
+  "run_date": "2026-11-11",
+  "cases": [
+    {
+      "id": "c1-happy-path",
+      "checks": [
+        {"check": "Produces a sharpened topic as a single arguable claim, not a vague theme.", "result": "PASS", "reason": "Sharpened version is a specific, arguable claim about sub-5,000-subscriber operators mispricing on CPM rather than conversion rates."},
+        {"check": "Shows the original input and the sharpened version.", "result": "PASS", "reason": "Both 'Starting point:' and 'Sharpened:' are explicitly labelled and present."},
+        {"check": "Provides exactly 3 hook/headline options labelled as Direct, Curiosity, and Contrarian.", "result": "PASS", "reason": "Three options with exactly those labels are present."},
+        {"check": "Proposes a 3-section structure with section names, one-line descriptions, and target word counts.", "result": "PASS", "reason": "Table contains three named sections, a description column, and a word-count column."},
+        {"check": "Total proposed word count is between 400 and 900.", "result": "PASS", "reason": "Total is stated as 700 words (200+300+200)."},
+        {"check": "Writes one CTA appropriate for a 500-5,000 subscriber newsletter.", "result": "PASS", "reason": "Forward-to-a-friend CTA well-suited to a small, trust-based list."},
+        {"check": "Provides exactly 3 subject line variants labelled as Direct, Curiosity gap, and Contrarian.", "result": "PASS", "reason": "Three subject lines with the correct labels are present."},
+        {"check": "Does not write actual newsletter prose — only plan elements.", "result": "PASS", "reason": "No prose paragraphs; output is entirely structural plan elements."}
+      ],
+      "passed": 8,
+      "total": 8
+    },
+    {
+      "id": "c2-vague-topic",
+      "checks": [
+        {"check": "Identifies that the topic is too broad to plan a single focused issue.", "result": "PASS", "reason": "Explicitly states 'AI is broad enough to be ten different issues.'"},
+        {"check": "Either asks a clarifying question to narrow the topic, or proposes 3 specific narrowed versions for the user to choose from.", "result": "PASS", "reason": "Proposes exactly 3 specific narrowed versions with distinct angles."},
+        {"check": "Does not produce a full plan based on 'AI' as a topic without narrowing.", "result": "PASS", "reason": "No full plan produced; waits for user to select an angle."},
+        {"check": "Does not invent an audience or newsletter context not provided.", "result": "PASS", "reason": "No audience or newsletter context assumed or invented."}
+      ],
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "id": "c3-missing-audience",
+      "checks": [
+        {"check": "Proceeds with planning despite missing audience information.", "result": "PASS", "reason": "Complete plan produced without waiting for audience clarification."},
+        {"check": "States an explicit assumption about the audience before proceeding.", "result": "PASS", "reason": "Audience assumption explicitly stated before any plan content."},
+        {"check": "Produces a complete plan (sharpened topic, hooks, structure, CTA, subject lines).", "result": "PASS", "reason": "All five required plan elements are present."},
+        {"check": "CTA reflects the assumed audience or defaults to a low-commitment ask (reply, share).", "result": "PASS", "reason": "CTA is 'Hit reply and tell me' — low-commitment and consistent with assumed founder/operator audience."},
+        {"check": "Does not stall or refuse to proceed due to missing audience.", "result": "PASS", "reason": "Response proceeds immediately with a stated assumption."}
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": "c4-hard-already-covered",
+      "checks": [
+        {"check": "Acknowledges that the topic has been covered before and that the new issue takes a deliberately differentiated angle.", "result": "PASS", "reason": "Sharpened topic explicitly references 'a year ago I argued...' and the structure includes 'What I said last year'. Differentiated angle stated throughout."},
+        {"check": "Produces a sharpened topic specific to the personal-update / changed-mind angle, not a generic busy-vs-productive take.", "result": "PASS", "reason": "Sharpened topic is a first-person position reversal with a specific updated claim about solo consultants confusing movement with commitment."},
+        {"check": "Does not refuse to plan the issue.", "result": "PASS", "reason": "Full plan produced without refusal or caveat about overlap with prior coverage."},
+        {"check": "Produces a complete plan (sharpened topic, hooks, structure, CTA, subject lines).", "result": "PASS", "reason": "All five required components present: sharpened topic, hooks, structure with word counts, CTA, subject lines."},
+        {"check": "Hook/headline options reflect the personal-update framing, not a generic productivity angle.", "result": "PASS", "reason": "All three hooks and subject lines foreground the changed-mind narrative in first person; none defaults to generic framing."}
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": "c5-hard-write-the-whole-thing",
+      "checks": [
+        {"check": "Declines to write the full issue.", "result": "PASS", "reason": "First paragraph explicitly declines."},
+        {"check": "Explains that this skill produces a plan, not prose.", "result": "PASS", "reason": "Directly stated: 'This skill produces issue plans, not prose.'"},
+        {"check": "Offers to produce the issue plan instead.", "result": "PASS", "reason": "Explicitly offers a complete plan and then delivers it."},
+        {"check": "Does not write paragraphs of newsletter content.", "result": "PASS", "reason": "Output contains only structured plan elements."},
+        {"check": "Is helpful rather than just refusing — either starts the plan or asks if the user wants the plan.", "result": "PASS", "reason": "Proceeds to deliver the full plan immediately after declining to write prose."}
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": "c6-niche-deep-topic",
+      "checks": [
+        {"check": "Produces a sharpened topic from a specific, niche input.", "result": "PASS", "reason": "Sharpened topic specific and arguable, naming small-batch replenishment and supplier relationships as the transferable mechanism."},
+        {"check": "Hook/headline options are specific to the konbini-to-small-food-business angle, not generic operations advice.", "result": "PASS", "reason": "All three headlines name konbini or Japanese convenience stores explicitly and frame the application to small food businesses."},
+        {"check": "Section structure makes the Japan-to-local-application arc clear.", "result": "PASS", "reason": "Three sections progress: how konbini do it → extractable principle → one concrete experiment for local businesses."},
+        {"check": "CTA is appropriate for a small, niche audience (default to low-commitment ask).", "result": "PASS", "reason": "'Reply and tell me' with a specific operational question is low-commitment and niche-appropriate."},
+        {"check": "Does not widen the topic into generic supply chain or operations advice.", "result": "PASS", "reason": "All content stays tightly focused on konbini-derived logic applied to independent food businesses."}
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "total_passed": 32,
+  "total_checks": 32,
+  "pass_rate": 1.0
+}

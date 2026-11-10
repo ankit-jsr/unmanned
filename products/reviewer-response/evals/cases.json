@@ -1,0 +1,80 @@
+{
+  "skill": "reviewer-response",
+  "cases": [
+    {
+      "id": "c1-happy-path",
+      "prompt": "Help me respond to these peer review comments.\n\nPaper: 'Longitudinal effects of urban tree canopy expansion on neighbourhood surface temperatures in Phoenix, AZ' — submitted to Urban Climate.\n\nAbstract summary: We analysed 15 years of Landsat data across 42 Phoenix neighbourhoods and found that neighbourhoods with >20% canopy gain showed statistically significant surface temperature reductions of 1.8–3.2°C compared to matched controls. Effect was strongest in low-income areas with high impervious cover.\n\nReviewer 1:\n1. The methods section does not explain how 'matched controls' were selected. This is a critical omission.\n2. Figure 3 is too small to read the axis labels. Please enlarge.\n\nReviewer 2:\n1. The discussion overstates the policy implication. The paper shows correlation, not causation, but the conclusion section reads as if causation is established.",
+      "input_files": [],
+      "checks": [
+        "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).",
+        "Classifies each comment as Accept, Partial, or Pushback.",
+        "Drafts a specific response to R1.1 that acknowledges the omission and states what will be added to the methods section.",
+        "Drafts a response to R1.2 that accepts the change.",
+        "Drafts a response to R2.1 that either accepts the critique or pushes back with specific evidence — not just vague agreement.",
+        "Includes an opening paragraph thanking the reviewers.",
+        "Includes a closing summary of major changes.",
+        "Does not invent data or citations not provided by the user.",
+        "Output is paste-ready in standard academic response letter format."
+      ]
+    },
+    {
+      "id": "c2-major-revision-request",
+      "prompt": "I need to respond to this reviewer. The journal wants major revisions.\n\nPaper: 'Early childhood screen time and executive function at age 5: a cohort study' — submitted to Developmental Psychology.\n\nSummary: We followed 847 children from age 18 months to 5 years, measuring screen time via parental diary and executive function via DCCS and Flanker tasks. Children with >3 hours/day at ages 2-3 showed lower EF scores at 5, controlling for SES and parental education.\n\nReviewer 1 comment: The study's main limitation is that screen time was measured only by parental report, which is known to underestimate actual exposure by 30-40%. Without device-based measurement, the effect sizes are likely underestimates. I recommend the authors either (a) collect device-log data from a subsample and validate the diary measures, or (b) reframe the entire paper as a pilot study with effect sizes treated as lower bounds.",
+      "input_files": [],
+      "checks": [
+        "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.",
+        "Presents both options the reviewer offered and states which path the authors are taking.",
+        "Does not dismiss or minimise the measurement concern.",
+        "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).",
+        "Does not invent device-log data that was not provided.",
+        "Maintains a professional, collegial tone throughout."
+      ]
+    },
+    {
+      "id": "c3-missing-paper-context",
+      "prompt": "Can you help me respond to my reviewers? Here are the comments:\n\nReviewer 1: The sample size is underpowered for the subgroup analyses in Table 4.\nReviewer 2: The literature review omits several key papers on this topic from 2023-2024.",
+      "input_files": [],
+      "checks": [
+        "Asks for the paper title and abstract or summary before drafting responses.",
+        "Does not draft responses without knowing what the paper is about.",
+        "Does not invent paper details.",
+        "Specifies exactly what information it needs to proceed."
+      ]
+    },
+    {
+      "id": "c4-hard-contradictory-comment",
+      "prompt": "Please help me draft a response to this reviewer comment.\n\nPaper: 'Platform competition and creator revenue in short-form video: evidence from TikTok policy changes' — submitted to Information Systems Research.\n\nSummary: We use a difference-in-differences design around TikTok's 2024 Creator Fund restructuring to estimate the effect on creator revenue. We find the restructuring reduced median earnings by 34% while increasing top-decile earnings by 12%.\n\nReviewer 2, Comment 4: The difference-in-differences identification assumption requires parallel trends, which you test in Appendix B. However, your pre-trend test shows a statistically significant deviation at t=-2, which you dismiss as 'marginally significant at p=0.049'. This is not marginal — it is a failed parallel trends test and your entire causal interpretation is invalid. At the same time, the coefficient plot in Figure 2 clearly shows parallel trends visually, so I am uncertain whether to recommend rejection.",
+      "input_files": [],
+      "checks": [
+        "Identifies that the reviewer comment is internally contradictory (failed statistical test vs. visual parallel trends).",
+        "Flags the contradiction to the author rather than drafting a response that ignores it.",
+        "Asks the author how they want to handle the tension before drafting.",
+        "Does not invent a resolution or additional statistical analysis.",
+        "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction."
+      ]
+    },
+    {
+      "id": "c5-hard-no-comments-pasted",
+      "prompt": "Help me respond to my reviewers. The paper got rejected with major revisions from Nature Human Behaviour.",
+      "input_files": [],
+      "checks": [
+        "Asks for the reviewer comments before proceeding.",
+        "Does not draft a generic response letter without the actual comments.",
+        "Does not invent plausible reviewer comments.",
+        "Also asks for or confirms paper context if not provided."
+      ]
+    },
+    {
+      "id": "c6-pushback-tone-redirect",
+      "prompt": "These reviewers are completely wrong and I want to tell them so. Write me a response.\n\nPaper: 'Gut microbiome diversity and depression: a systematic review and meta-analysis' — BMC Psychiatry.\n\nSummary: We meta-analysed 34 studies (n=6,200) and found reduced alpha-diversity in depressed vs. healthy controls (SMD=-0.41, 95% CI -0.55 to -0.27).\n\nReviewer 1: The heterogeneity across studies (I²=78%) is too high to pool results in a meta-analysis. The authors should use a narrative synthesis instead.\n\nAuthor note: We disagree — high heterogeneity is normal in this field and random-effects models are designed for it.",
+      "input_files": [],
+      "checks": [
+        "Declines to write an angry or dismissive response.",
+        "Acknowledges the author's disagreement with the reviewer and validates the substance of the pushback.",
+        "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.",
+        "Maintains a collegial tone in the drafted response.",
+        "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence."
+      ]
+    }
+  ]
+}

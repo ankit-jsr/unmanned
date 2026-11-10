@@ -1,0 +1,82 @@
+{
+  "skill": "grant-fit-screener",
+  "run_date": "2026-11-11",
+  "cases": [
+    {
+      "id": "c1-high-fit",
+      "checks": [
+        {"check": "Returns a verdict of High.", "result": "PASS", "reason": "Memo states 'Verdict: High' explicitly."},
+        {"check": "Identifies at least 3 funder priorities quoted directly from the RFP text.", "result": "PASS", "reason": "Four verbatim RFP quotes appear in the Funder Priorities section."},
+        {"check": "Scores all three dimensions (mission alignment, eligibility, capacity) explicitly.", "result": "PASS", "reason": "Table covers all three dimensions with named scores and reasons."},
+        {"check": "Includes a list of watch-out items (requirements most likely to be underdeveloped), not just a congratulations.", "result": "PASS", "reason": "Three numbered watch-out items covering runoff nexus, geographic specificity, and outcome metrics."},
+        {"check": "Does not write any proposal narrative or draft grant sections.", "result": "PASS", "reason": "No proposal narrative or draft sections appear anywhere in the output."},
+        {"check": "Keeps the full memo under 400 words.", "result": "PASS", "reason": "Memo is approximately 340 words, well under the 400-word limit."}
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "id": "c2-low-fit-wrong-mission",
+      "checks": [
+        {"check": "Returns a verdict of Low.", "result": "PASS", "reason": "Memo states 'Verdict: Low' explicitly."},
+        {"check": "Identifies at least two specific blockers (geography mismatch and mission mismatch).", "result": "PASS", "reason": "Both blockers named and explained as separate numbered items under 'Blockers'."},
+        {"check": "Scores Eligibility as Weak due to Texas-only requirement.", "result": "PASS", "reason": "Eligibility row scored Weak citing the geographic eligibility bar explicitly."},
+        {"check": "Scores Mission alignment as Weak.", "result": "PASS", "reason": "Mission Alignment row scored Weak."},
+        {"check": "Does not soften the Low verdict or suggest the org can overcome the eligibility block.", "result": "PASS", "reason": "Closes with 'Do not apply. Neither blocker is addressable' — no hedging."},
+        {"check": "Does not write any proposal text.", "result": "PASS", "reason": "No proposal text appears in the output."}
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "id": "c3-medium-fit",
+      "checks": [
+        {"check": "Returns a verdict of Medium.", "result": "PASS", "reason": "Memo states 'Verdict: Medium' explicitly."},
+        {"check": "Notes that mission alignment is Partial (adjacent population, indirect housing connection).", "result": "PASS", "reason": "Mission Alignment scored Partial, reason notes adjacent population and indirect housing link."},
+        {"check": "Notes that capacity is Partial or Weak (no housing programme, one tangential pilot).", "result": "PASS", "reason": "Capacity scored Partial, citing lack of standalone housing programming and thin pilot evidence."},
+        {"check": "Provides at least 2 concrete strengthening actions the org can take before applying.", "result": "PASS", "reason": "Three numbered strengthening actions provided, each specific and actionable."},
+        {"check": "Does not return High or Low.", "result": "PASS", "reason": "Verdict is Medium only."},
+        {"check": "Does not invent programme details the org did not mention.", "result": "PASS", "reason": "All referenced details drawn directly from the org profile."}
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "id": "c4-missing-org-profile",
+      "checks": [
+        {"check": "Asks for the org profile before proceeding.", "result": "PASS", "reason": "First sentence explicitly states it needs the org profile before assessing fit."},
+        {"check": "Does not issue a fit verdict without org information.", "result": "PASS", "reason": "No verdict of any kind is issued."},
+        {"check": "Does not invent or assume org details.", "result": "PASS", "reason": "No org details assumed or fabricated."},
+        {"check": "Specifies what information it needs (mission, geography, budget, track record).", "result": "PASS", "reason": "Bulleted list requests mission, primary geography, population served, annual budget, and track record."}
+      ],
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "id": "c5-redirect-from-drafting",
+      "checks": [
+        {"check": "Declines to write the proposal.", "result": "PASS", "reason": "Opens with explicit refusal: 'I will not draft any proposal narrative here.'"},
+        {"check": "Redirects to the fit screening purpose of the skill.", "result": "PASS", "reason": "Immediately redirects: 'What I can do, and will do now...is run the fit assessment.'"},
+        {"check": "Still performs the fit assessment since both inputs are present.", "result": "PASS", "reason": "Full fit memo with scored dimensions and verdict follows the redirection."},
+        {"check": "Explains what the skill does and does not do.", "result": "PASS", "reason": "First paragraph clearly states the skill screens for fit and does not write proposals."}
+      ],
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "id": "c6-hard-complex-eligibility",
+      "checks": [
+        {"check": "Works through eligibility requirements one by one rather than giving a summary verdict immediately.", "result": "PASS", "reason": "Eligibility table with five rows works through each criterion individually before summary scores."},
+        {"check": "Flags the unconfirmed HPSA designation as a blocker that must be verified before applying.", "result": "PASS", "reason": "HPSA row marked Unconfirmed; verification item 2 requires HPSA confirmation before applying."},
+        {"check": "Notes that HRSA funding 4 years ago (FY2022) may or may not fall within the 'prior two award cycles' restriction and flags this as requiring confirmation.", "result": "PASS", "reason": "Prior-award row marked Uncertain; verification item 3 instructs contacting the programme officer to confirm."},
+        {"check": "Does not issue a High verdict given the unconfirmed eligibility items.", "result": "PASS", "reason": "Verdict is Low."},
+        {"check": "Lists the specific verifications the org must complete before applying.", "result": "PASS", "reason": "Four numbered verifications listed covering FQHC status, HPSA, prior-award restriction, and cash match."}
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "total_passed": 31,
+  "total_checks": 31,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,79 @@
+{
+  "skill": "newsletter-issue-planner",
+  "cases": [
+    {
+      "id": "c1-happy-path",
+      "prompt": "Plan my next issue. Topic: I want to write about how most creators undercharge for sponsorships because they misunderstand CPM. Audience: independent newsletter operators with 500–5,000 subscribers. Newsletter: The Operator, a weekly newsletter about newsletter business strategy.",
+      "input_files": [],
+      "checks": [
+        "Produces a sharpened topic as a single arguable claim, not a vague theme.",
+        "Shows the original input and the sharpened version.",
+        "Provides exactly 3 hook/headline options labelled as Direct, Curiosity, and Contrarian.",
+        "Proposes a 3-section structure with section names, one-line descriptions, and target word counts.",
+        "Total proposed word count is between 400 and 900.",
+        "Writes one CTA appropriate for a 500-5,000 subscriber newsletter.",
+        "Provides exactly 3 subject line variants labelled as Direct, Curiosity gap, and Contrarian.",
+        "Does not write actual newsletter prose — only plan elements."
+      ]
+    },
+    {
+      "id": "c2-vague-topic",
+      "prompt": "Help me plan my next newsletter issue. I want to write about AI.",
+      "input_files": [],
+      "checks": [
+        "Identifies that the topic is too broad to plan a single focused issue.",
+        "Either asks a clarifying question to narrow the topic, or proposes 3 specific narrowed versions for the user to choose from.",
+        "Does not produce a full plan based on 'AI' as a topic without narrowing.",
+        "Does not invent an audience or newsletter context not provided."
+      ]
+    },
+    {
+      "id": "c3-missing-audience",
+      "prompt": "Plan my next issue. Topic: Why the best founders I know still keep a physical notebook for strategy sessions, even though they use AI for everything else.",
+      "input_files": [],
+      "checks": [
+        "Proceeds with planning despite missing audience information.",
+        "States an explicit assumption about the audience before proceeding.",
+        "Produces a complete plan (sharpened topic, hooks, structure, CTA, subject lines).",
+        "CTA reflects the assumed audience or defaults to a low-commitment ask (reply, share).",
+        "Does not stall or refuse to proceed due to missing audience."
+      ]
+    },
+    {
+      "id": "c4-hard-already-covered",
+      "prompt": "Plan my next issue. Topic: The difference between being busy and being productive — I already wrote about this last year, but I want to revisit it with the angle: 'What changed my mind — here's what I said last year, here's what I got wrong, here's what I think now.' Go ahead and build the full plan with that angle.\n\nAudience: solo consultants and freelancers. Newsletter: The Independent, weekly.",
+      "input_files": [],
+      "checks": [
+        "Acknowledges that the topic has been covered before and that the new issue takes a deliberately differentiated angle.",
+        "Produces a sharpened topic specific to the personal-update / changed-mind angle, not a generic busy-vs-productive take.",
+        "Does not refuse to plan the issue.",
+        "Produces a complete plan (sharpened topic, hooks, structure, CTA, subject lines).",
+        "Hook/headline options reflect the personal-update framing, not a generic productivity angle."
+      ]
+    },
+    {
+      "id": "c5-hard-write-the-whole-thing",
+      "prompt": "Can you write my whole next newsletter issue for me? Topic: Why I stopped checking email in the morning and what I do instead. Audience: productivity-focused professionals.",
+      "input_files": [],
+      "checks": [
+        "Declines to write the full issue.",
+        "Explains that this skill produces a plan, not prose.",
+        "Offers to produce the issue plan instead.",
+        "Does not write paragraphs of newsletter content.",
+        "Is helpful rather than just refusing — either starts the plan or asks if the user wants the plan."
+      ]
+    },
+    {
+      "id": "c6-niche-deep-topic",
+      "prompt": "Plan my next issue. Topic: The specific way that Japanese convenience stores (konbini) manage cold chain logistics for their fresh food — I think there is a business operations lesson in there for small food businesses. Audience: independent food business owners (bakeries, cafes, small restaurants). Newsletter: The Small Food Business Digest.",
+      "input_files": [],
+      "checks": [
+        "Produces a sharpened topic from a specific, niche input.",
+        "Hook/headline options are specific to the konbini-to-small-food-business angle, not generic operations advice.",
+        "Section structure makes the Japan-to-local-application arc clear.",
+        "CTA is appropriate for a small, niche audience (default to low-commitment ask).",
+        "Does not widen the topic into generic supply chain or operations advice."
+      ]
+    }
+  ]
+}

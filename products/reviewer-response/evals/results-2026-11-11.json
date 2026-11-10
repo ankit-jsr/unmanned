@@ -1,0 +1,84 @@
+{
+  "skill": "reviewer-response",
+  "run_date": "2026-11-11",
+  "cases": [
+    {
+      "id": "c1-happy-path",
+      "checks": [
+        {"check": "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).", "result": "PASS", "reason": "R1.1, R1.2, and R2.1 all present and correctly labelled."},
+        {"check": "Classifies each comment as Accept, Partial, or Pushback.", "result": "PASS", "reason": "All three comments classified as (A) Accept immediately after the comment header."},
+        {"check": "Drafts a specific response to R1.1 that acknowledges the omission and states what will be added to the methods section.", "result": "PASS", "reason": "Specifies new paragraph in Section 2.3 with matching variables, tolerances, and propensity score method."},
+        {"check": "Drafts a response to R1.2 that accepts the change.", "result": "PASS", "reason": "Confirms Figure 3 redrawn with enlarged axis labels at 10pt."},
+        {"check": "Drafts a response to R2.1 that either accepts the critique or pushes back with specific evidence — not just vague agreement.", "result": "PASS", "reason": "Accepts with specific sentences changed and an added causal inference caveat."},
+        {"check": "Includes an opening paragraph thanking the reviewers.", "result": "PASS", "reason": "Opening paragraph thanks reviewers and acknowledges constructive comments."},
+        {"check": "Includes a closing summary of major changes.", "result": "PASS", "reason": "Summary of major changes section present with four bulleted items."},
+        {"check": "Does not invent data or citations not provided by the user.", "result": "PASS", "reason": "No fabricated numbers or external citations; additions described as future revisions."},
+        {"check": "Output is paste-ready in standard academic response letter format.", "result": "PASS", "reason": "Structured with salutation, numbered point-by-point responses, and summary section."}
+      ],
+      "passed": 9,
+      "total": 9
+    },
+    {
+      "id": "c2-major-revision-request",
+      "checks": [
+        {"check": "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.", "result": "PASS", "reason": "Explicitly cites 30–40% underestimation figure and calls the concern well-founded."},
+        {"check": "Presents both options the reviewer offered and states which path the authors are taking.", "result": "PASS", "reason": "Both options presented with rationale; option (b) chosen with explanation."},
+        {"check": "Does not dismiss or minimise the measurement concern.", "result": "PASS", "reason": "Explicitly states 'we do not minimise it' and affirms the measurement validity concern."},
+        {"check": "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).", "result": "PASS", "reason": "Four concrete changes: abstract revision, new Section 4.1, discussion language, updated conclusion."},
+        {"check": "Does not invent device-log data that was not provided.", "result": "PASS", "reason": "States device-log access not available; no invented subsample validation data."},
+        {"check": "Maintains a professional, collegial tone throughout.", "result": "PASS", "reason": "Tone respectful and measured; thanks reviewer and engages substantively."}
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "id": "c3-missing-paper-context",
+      "checks": [
+        {"check": "Asks for the paper title and abstract or summary before drafting responses.", "result": "PASS", "reason": "Requests paper title and abstract or 3–5 sentence summary before proceeding."},
+        {"check": "Does not draft responses without knowing what the paper is about.", "result": "PASS", "reason": "Withholds drafting entirely."},
+        {"check": "Does not invent paper details.", "result": "PASS", "reason": "No paper details assumed or fabricated."},
+        {"check": "Specifies exactly what information it needs to proceed.", "result": "PASS", "reason": "Numbered list specifies: (1) paper title and (2) abstract or 3–5 sentence summary."}
+      ],
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "id": "c4-hard-contradictory-comment",
+      "checks": [
+        {"check": "Identifies that the reviewer comment is internally contradictory (failed statistical test vs. visual parallel trends).", "result": "PASS", "reason": "Contradiction explicitly named; both conflicting claims quoted and contrasted."},
+        {"check": "Flags the contradiction to the author rather than drafting a response that ignores it.", "result": "PASS", "reason": "Opens by flagging contradiction to author and explains why it must be resolved before drafting."},
+        {"check": "Asks the author how they want to handle the tension before drafting.", "result": "PASS", "reason": "Three specific questions posed about pre-trend test results, interpretation, and willingness to run robustness checks."},
+        {"check": "Does not invent a resolution or additional statistical analysis.", "result": "PASS", "reason": "No resolution proposed or invented; defers entirely to author input."},
+        {"check": "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction.", "result": "PASS", "reason": "No draft response produced; drafting explicitly withheld."}
+      ],
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": "c5-hard-no-comments-pasted",
+      "checks": [
+        {"check": "Asks for the reviewer comments before proceeding.", "result": "PASS", "reason": "First item requested is the full reviewer comments."},
+        {"check": "Does not draft a generic response letter without the actual comments.", "result": "PASS", "reason": "No response letter drafted; output stops and requests missing material."},
+        {"check": "Does not invent plausible reviewer comments.", "result": "PASS", "reason": "No reviewer comments fabricated or assumed."},
+        {"check": "Also asks for or confirms paper context if not provided.", "result": "PASS", "reason": "Item 2 asks for paper title and abstract or summary."}
+      ],
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "id": "c6-pushback-tone-redirect",
+      "checks": [
+        {"check": "Declines to write an angry or dismissive response.", "result": "PASS", "reason": "Explicitly states it will not draft an angry or dismissive response."},
+        {"check": "Acknowledges the author's disagreement with the reviewer and validates the substance of the pushback.", "result": "PASS", "reason": "States 'there is a genuine methodological argument on your side' before drafting."},
+        {"check": "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.", "result": "PASS", "reason": "Three substantive paragraphs explaining random-effects rationale, field norms, and subgroup analyses."},
+        {"check": "Maintains a collegial tone in the drafted response.", "result": "PASS", "reason": "Opens with thanks, uses 'we respectfully maintain', addresses reviewer concern as 'important'."},
+        {"check": "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence.", "result": "PASS", "reason": "Maintains meta-analytic pooling throughout; does not recommend switching to narrative synthesis."}
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  ],
+  "total_passed": 33,
+  "total_checks": 33,
+  "pass_rate": 1.0
+}
