@@ -9,6 +9,6 @@
 ## 2026-11-10: Day 0, housekeeping
 - **Objective:** remove the investor's personal name from the repo's files, at his request.
   Earlier commits still contain it; he chose to keep the history.
-- **Shipped:** "the investor" replaces the name everywhere; label renamed to `needs-investor`.
+- **Shipped:** "the investor" replaces the name in every file (it remains in the repo URL); label renamed to `needs-investor`.
   `repo_url` now points at the repo's real home; decision 003 states the correct check count.
 - **Blocked:** label, first two issues and branch protection still need setting up on GitHub.
