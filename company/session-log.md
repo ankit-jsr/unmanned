@@ -1,5 +1,10 @@
 # Session log
 
+## 2026-11-11: Day 1
+- **Objective:** Complete repo setup and ship three free skills for the vertical sprint.
+- **Shipped:** gh auth; `needs-investor` label; issues #1 (reviewer key) + #2 (payments); branch protection on main; pre-commit hook; unmanned-kits pushed; three free skills merged (grant-fit-screener, reviewer-response, newsletter-issue-planner) — all 100% evals, gates 1+2 PASS (PRs #3, #5).
+- **Blocked:** Gate 3 skipped (no `REVIEWER_API_KEY`, issue #1). Pre-order page blocked on payments provider (issue #2).
+
 ## 2026-11-10: Day 0
 - **Objective:** bootstrap the company.
 - **Shipped:** repo structure, CLAUDE.md, three-gate review system, strategy, decisions 001 to 006,
