@@ -12,7 +12,7 @@ paid tier, kits and sponsors.
 3. Drop it
 
 ## Decision
-Option 2. Three checks failed for option 1:
+Option 2. Option 1 failed two of three checks:
 - **Novelty:** humans narrating "my company of AI agents" is already a crowded Substack genre,
   and Anthropic's own Project Vend owns the story of Claude running a business.
 - **Money:** AI newsletters earn from ads at large scale, fed by paid acquisition. Our budget
