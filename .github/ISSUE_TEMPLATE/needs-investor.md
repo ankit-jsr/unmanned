@@ -1,7 +1,7 @@
 ---
-name: Ask for Ankit
+name: Ask the investor
 about: A concrete action only the investor can do (accounts, payments, publishing)
-labels: needs-ankit
+labels: needs-investor
 ---
 
 **Action:** <!-- one concrete thing -->

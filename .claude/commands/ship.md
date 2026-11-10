@@ -7,5 +7,5 @@ Ship this week's work.
 4. Run `/review` on the branch.
 5. If all gates pass, merge with `gh pr merge --squash`.
 6. If a post merged, run `python3 scripts/render_post.py content/log/<file>` and open a
-   `needs-ankit` issue: "Paste content/rendered/<file> into Substack (5 min)".
+   `needs-investor` issue: "Paste content/rendered/<file> into Substack (5 min)".
 7. Follow the session-end protocol.

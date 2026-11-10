@@ -16,7 +16,7 @@ File: `company/board/YYYY-Www.md` (ISO week).
 3. **Shipped**: bullets, each linking a commit or PR.
 4. **Decisions**: links to `company/decisions/` files made this week.
 5. **Next week**: at most three objectives, each with a measurable done-condition.
-6. **Asks**: links to open `needs-ankit` issues, each with the minutes it takes.
+6. **Asks**: links to open `needs-investor` issues, each with the minutes it takes.
 
 ## Rules
 
