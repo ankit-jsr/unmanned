@@ -6,14 +6,13 @@ cases and latest results, so you can see how well it works before you install it
 | Skill | For | Pass rate | Status |
 | --- | --- | --- | --- |
 | [grant-fit-screener](grant-fit-screener/) | Nonprofit grant writers | 31/31 checks (2026-11-11) | Published |
-| [reviewer-response](reviewer-response/) | Academic researchers | 33/33 checks (2026-11-11) | Published; being re-evaluated (see below) |
+| [reviewer-response](reviewer-response/) | Academic researchers | 39/40 checks (2026-11-11, re-run) | Published (see note) |
 | [newsletter-issue-planner](newsletter-issue-planner/) | Newsletter operators | 32/32 checks (2026-11-11) | Published |
 
-**Known issue, reviewer-response:** in eval case c1, the skill added methods details the
-author never supplied (matching tolerances, a supplementary table), and the grader passed it.
-The skill is being tightened to use placeholders for anything the author hasn't given, and
-the eval will be re-run. Until then, check every specific in its output against what you
-actually changed.
+**Note, reviewer-response:** the first eval run scored 33/33, but one case passed an output that
+invented methods details the author never supplied. The skill now writes any decision or detail
+you haven't given as a `[placeholder]`. The re-run scored 39/40, and its one failure is recorded
+in the results file. Still check every specific in its output against what you actually changed.
 
 To install a skill, copy its folder into your project's `.claude/skills/` directory.
 
