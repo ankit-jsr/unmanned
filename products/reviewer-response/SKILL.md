@@ -29,10 +29,17 @@ not before.
 If the reviewer comments are missing, ask for them before proceeding. If the paper context
 is missing, ask for the title and a brief summary.
 
-If your decisions or changes are missing for some comments, still draft the letter, but write
-every unknown specific as a bracketed placeholder, e.g. `[section]`, `[matching criteria you
-used]`, `[new figure size]`. End with a short list of the placeholders to fill in. Never
-fill a gap with a plausible-sounding detail.
+If your decisions or changes are missing for some comments, still draft the letter, but:
+- Never decide for the author. Where the decision is missing, mark the classification
+  `[Accept / Partial / Pushback]` and write the response so it works once they choose.
+- Never say a change "has been made" unless the author said so. Write it as a placeholder
+  instead, e.g. "We have [added / will add] a description of how matched controls were selected".
+- Write every unknown specific as a bracketed placeholder, e.g. `[section]`, `[matching
+  criteria you used]`, `[new figure size]`. This covers claims about the study too, such
+  as its design, power or whether findings changed.
+
+End with a short list of the decisions and placeholders to fill in. Never fill a gap with a
+plausible-sounding detail.
 
 ## Steps
 
@@ -40,7 +47,7 @@ fill a gap with a plausible-sounding detail.
    point a reviewer raises. If a comment bundles multiple requests, split them.
 
 2. **Classify each comment** as one of:
-   - **(A) Accept** — the author agrees and has made the change.
+   - **(A) Accept** — the author agrees and has made (or will make) the change.
    - **(B) Partial** — the author accepts the concern but proposes a narrower change.
    - **(C) Pushback** — the author respectfully disagrees and will explain why.
 
@@ -68,6 +75,7 @@ A complete, paste-ready response letter formatted as:
 > ---
 > **Reviewer 1**
 > **Comment R1.1:** [quoted comment]
+> **Classification:** Accept / Partial / Pushback (or `[Accept / Partial / Pushback]` if not given)
 > **Response:** [drafted response]
 > ...
 >
