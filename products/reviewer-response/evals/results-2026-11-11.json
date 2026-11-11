@@ -1,84 +1,241 @@
 {
   "skill": "reviewer-response",
   "run_date": "2026-11-11",
+  "method": "fresh subagent per case with only SKILL.md and the prompt; separate grader",
   "cases": [
     {
-      "id": "c1-happy-path",
+      "id": "c1-no-decisions-given",
       "checks": [
-        {"check": "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).", "result": "PASS", "reason": "R1.1, R1.2, and R2.1 all present and correctly labelled."},
-        {"check": "Classifies each comment as Accept, Partial, or Pushback.", "result": "PASS", "reason": "All three comments classified as (A) Accept immediately after the comment header."},
-        {"check": "Drafts a specific response to R1.1 that acknowledges the omission and states what will be added to the methods section.", "result": "PASS", "reason": "Specifies new paragraph in Section 2.3 with matching variables, tolerances, and propensity score method."},
-        {"check": "Drafts a response to R1.2 that accepts the change.", "result": "PASS", "reason": "Confirms Figure 3 redrawn with enlarged axis labels at 10pt."},
-        {"check": "Drafts a response to R2.1 that either accepts the critique or pushes back with specific evidence — not just vague agreement.", "result": "PASS", "reason": "Accepts with specific sentences changed and an added causal inference caveat."},
-        {"check": "Includes an opening paragraph thanking the reviewers.", "result": "PASS", "reason": "Opening paragraph thanks reviewers and acknowledges constructive comments."},
-        {"check": "Includes a closing summary of major changes.", "result": "PASS", "reason": "Summary of major changes section present with four bulleted items."},
-        {"check": "Does not invent data or citations not provided by the user.", "result": "PASS", "reason": "No fabricated numbers or external citations; additions described as future revisions."},
-        {"check": "Output is paste-ready in standard academic response letter format.", "result": "PASS", "reason": "Structured with salutation, numbered point-by-point responses, and summary section."}
-      ],
-      "passed": 9,
-      "total": 9
+        {
+          "check": "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).",
+          "result": "PASS",
+          "reason": "Labels the comments 'Comment R1.1', 'Comment R1.2' and 'Comment R2.1'."
+        },
+        {
+          "check": "Classifies each comment as Accept, Partial, or Pushback, or asks the author to confirm the classification.",
+          "result": "PASS",
+          "reason": "States 'I've drafted all three comments as accepted (A)', and the note after the letter asks the author to confirm or change R2.1 to Partial/Pushback."
+        },
+        {
+          "check": "The R1.1 response acknowledges the omission and says a description of how matched controls were selected has been added, without stating any matching variables, tolerances, method names or table numbers the user did not supply (placeholders are fine).",
+          "result": "PASS",
+          "reason": "R1.1 says it 'should have been described explicitly' and 'We have added a description of the matching procedure to [location]'. Method, criteria, thresholds/calipers and any table/supplement are all bracketed ('[matching method...]', '[matching criteria/covariates used]'). No named method, variable, tolerance or table number."
+        },
+        {
+          "check": "The R1.2 response accepts the change without inventing a specific new figure size or font size.",
+          "result": "PASS",
+          "reason": "R1.2 says 'We have revised Figure 3 by [what you changed, e.g. new figure size, larger axis label font...]'. No size or font value is given."
+        },
+        {
+          "check": "The R2.1 response engages specifically with the causation point, without inventing section, paragraph or sentence locations the user did not supply.",
+          "result": "PASS",
+          "reason": "R2.1 engages with the point ('supports an association ... not a definitive causal effect'). Locations are '[location(s), e.g. the Discussion and Conclusion sections...]', and the reviewer named those sections, so nothing is invented."
+        },
+        {
+          "check": "Every specific not given by the user appears as a bracketed placeholder, and the output lists the placeholders for the author to fill in.",
+          "result": "PASS",
+          "reason": "Every unknown (method, criteria, thresholds, figure change, locations, causal rewording, policy framing) is bracketed and listed in the 12-item 'Placeholders to fill in'. Numbers used (>20%, 1.8–3.2°C) are from the prompt. Borderline but acceptable: the unbracketed 'Our empirical findings are unchanged' is a claim the author didn't make, though it is implied by a wording-only change."
+        },
+        {
+          "check": "Includes an opening paragraph thanking the reviewers.",
+          "result": "PASS",
+          "reason": "Opens with 'We thank the editor and both reviewers for their careful reading...'."
+        },
+        {
+          "check": "Includes a closing summary of major changes.",
+          "result": "PASS",
+          "reason": "Has a 'Summary of major changes' section with bullets, locations bracketed."
+        },
+        {
+          "check": "Output is paste-ready in standard academic response letter format, apart from the marked placeholders.",
+          "result": "PASS",
+          "reason": "The letter sits between '---' separators in the 'Dear Editor and Reviewers' / Comment / Response / Summary format, so it can be pasted once the marked placeholders are filled."
+        }
+      ]
     },
     {
       "id": "c2-major-revision-request",
       "checks": [
-        {"check": "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.", "result": "PASS", "reason": "Explicitly cites 30–40% underestimation figure and calls the concern well-founded."},
-        {"check": "Presents both options the reviewer offered and states which path the authors are taking.", "result": "PASS", "reason": "Both options presented with rationale; option (b) chosen with explanation."},
-        {"check": "Does not dismiss or minimise the measurement concern.", "result": "PASS", "reason": "Explicitly states 'we do not minimise it' and affirms the measurement validity concern."},
-        {"check": "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).", "result": "PASS", "reason": "Four concrete changes: abstract revision, new Section 4.1, discussion language, updated conclusion."},
-        {"check": "Does not invent device-log data that was not provided.", "result": "PASS", "reason": "States device-log access not available; no invented subsample validation data."},
-        {"check": "Maintains a professional, collegial tone throughout.", "result": "PASS", "reason": "Tone respectful and measured; thanks reviewer and engages substantively."}
-      ],
-      "passed": 6,
-      "total": 6
+        {
+          "check": "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.",
+          "result": "PASS",
+          "reason": "R1.1 says 'relying only on parental diary reports is an important limitation' and discusses the direction of bias, including the caveat that under-reporting might differ by SES or parental education."
+        },
+        {
+          "check": "Presents both options the reviewer offered and, since the user hasn't said which path they are taking, asks them rather than choosing for them.",
+          "result": "PASS",
+          "reason": "Splits (a) and (b) into R1.2 and R1.3 with an 'Option if...' block for each. It does not choose: 'Please tell me which route you're taking', and placeholder 1 asks 'which of (a) or (b) you are answering'."
+        },
+        {
+          "check": "Does not dismiss or minimise the measurement concern.",
+          "result": "PASS",
+          "reason": "Takes the concern seriously throughout, e.g. 'we agree that the effect sizes should be interpreted with the measurement limitation in mind'. Even the Pushback option offers an alternative step."
+        },
+        {
+          "check": "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).",
+          "result": "PASS",
+          "reason": "Proposes concrete edits, e.g. revise '[Abstract, Discussion] to state that ... the reported effect sizes may be underestimates', and expand the limitations discussion of parent-reported screen time."
+        },
+        {
+          "check": "Does not invent device-log data that was not provided.",
+          "result": "PASS",
+          "reason": "All device-log details are placeholders ('subsample of [n] children', '[device/app used]', '[correlation / mean difference]'). No device data is invented."
+        },
+        {
+          "check": "Maintains a professional, collegial tone throughout.",
+          "result": "PASS",
+          "reason": "Collegial throughout ('We appreciate the reviewer's suggestion', 'We thank the reviewer for this alternative')."
+        },
+        {
+          "check": "Does not assert facts about the study's design, power or data that the user didn't supply (bracketed placeholders are fine).",
+          "result": "FAIL",
+          "reason": "In the R1.3 Partial option, the unbracketed sentence 'A prospective cohort of 847 children ... was designed and powered as a full study' asserts that the study was powered, which the user never said. The following '[add your power analysis or design rationale if you have one]' bracket asks for supporting detail but does not make the claim itself conditional."
+        }
+      ]
     },
     {
       "id": "c3-missing-paper-context",
       "checks": [
-        {"check": "Asks for the paper title and abstract or summary before drafting responses.", "result": "PASS", "reason": "Requests paper title and abstract or 3–5 sentence summary before proceeding."},
-        {"check": "Does not draft responses without knowing what the paper is about.", "result": "PASS", "reason": "Withholds drafting entirely."},
-        {"check": "Does not invent paper details.", "result": "PASS", "reason": "No paper details assumed or fabricated."},
-        {"check": "Specifies exactly what information it needs to proceed.", "result": "PASS", "reason": "Numbered list specifies: (1) paper title and (2) abstract or 3–5 sentence summary."}
-      ],
-      "passed": 4,
-      "total": 4
+        {
+          "check": "Asks for the paper title and abstract or summary before drafting responses.",
+          "result": "PASS",
+          "reason": "Asks for '1. The paper's title' and '2. A brief summary: the abstract, or 3-5 sentences'."
+        },
+        {
+          "check": "Does not draft responses without knowing what the paper is about.",
+          "result": "PASS",
+          "reason": "Only restates and labels the two comments; says 'Before I draft anything, I need some context'."
+        },
+        {
+          "check": "Does not invent paper details.",
+          "result": "PASS",
+          "reason": "Makes no claims about the paper. Possible actions (power analysis, exploratory reframing) are put as questions to the author."
+        },
+        {
+          "check": "Specifies exactly what information it needs to proceed.",
+          "result": "PASS",
+          "reason": "Lists numbered items: title and summary (required), then decisions and changes and the journal name (optional)."
+        }
+      ]
     },
     {
       "id": "c4-hard-contradictory-comment",
       "checks": [
-        {"check": "Identifies that the reviewer comment is internally contradictory (failed statistical test vs. visual parallel trends).", "result": "PASS", "reason": "Contradiction explicitly named; both conflicting claims quoted and contrasted."},
-        {"check": "Flags the contradiction to the author rather than drafting a response that ignores it.", "result": "PASS", "reason": "Opens by flagging contradiction to author and explains why it must be resolved before drafting."},
-        {"check": "Asks the author how they want to handle the tension before drafting.", "result": "PASS", "reason": "Three specific questions posed about pre-trend test results, interpretation, and willingness to run robustness checks."},
-        {"check": "Does not invent a resolution or additional statistical analysis.", "result": "PASS", "reason": "No resolution proposed or invented; defers entirely to author input."},
-        {"check": "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction.", "result": "PASS", "reason": "No draft response produced; drafting explicitly withheld."}
-      ],
-      "passed": 5,
-      "total": 5
+        {
+          "check": "Identifies that the reviewer comment is internally contradictory (failed statistical test vs. visual parallel trends).",
+          "result": "PASS",
+          "reason": "Under '1. The comment contradicts itself.' it sets Claim A (p=0.049 is 'a failed parallel trends test') against Claim B ('Figure 2 clearly shows parallel trends visually')."
+        },
+        {
+          "check": "Flags the contradiction to the author rather than drafting a response that ignores it.",
+          "result": "PASS",
+          "reason": "Flags it before drafting: 'I'd like to check two things with you before I draft the response, because this comment pulls in two directions'."
+        },
+        {
+          "check": "Asks the author how they want to handle the tension before drafting.",
+          "result": "PASS",
+          "reason": "Asks 'How do you want to handle this?' and offers options (a) to (d) with 'you choose; I won't pick one for you'."
+        },
+        {
+          "check": "Does not invent a resolution or additional statistical analysis.",
+          "result": "PASS",
+          "reason": "Proposes no result or analysis as done. Analyses appear only as questions ('what you ran (for example, a different event window...)'). One caveat: option (a) assumes 'one significant pre-period coefficient out of several', a pre-period count the prompt doesn't give, although the output then asks 'how many pre-periods there are'."
+        },
+        {
+          "check": "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction.",
+          "result": "PASS",
+          "reason": "Drafts no response at all and defers until the author has decided how to handle the tension."
+        }
+      ]
     },
     {
       "id": "c5-hard-no-comments-pasted",
       "checks": [
-        {"check": "Asks for the reviewer comments before proceeding.", "result": "PASS", "reason": "First item requested is the full reviewer comments."},
-        {"check": "Does not draft a generic response letter without the actual comments.", "result": "PASS", "reason": "No response letter drafted; output stops and requests missing material."},
-        {"check": "Does not invent plausible reviewer comments.", "result": "PASS", "reason": "No reviewer comments fabricated or assumed."},
-        {"check": "Also asks for or confirms paper context if not provided.", "result": "PASS", "reason": "Item 2 asks for paper title and abstract or summary."}
-      ],
-      "passed": 4,
-      "total": 4
+        {
+          "check": "Asks for the reviewer comments before proceeding.",
+          "result": "PASS",
+          "reason": "'Before I can draft anything, I need the reviewer comments themselves', and item 1 lists them as required."
+        },
+        {
+          "check": "Does not draft a generic response letter without the actual comments.",
+          "result": "PASS",
+          "reason": "No letter drafted; 'I won't start without them'."
+        },
+        {
+          "check": "Does not invent plausible reviewer comments.",
+          "result": "PASS",
+          "reason": "No reviewer comments invented. Only generic placeholder examples ('[section]', '[new sample size]')."
+        },
+        {
+          "check": "Also asks for or confirms paper context if not provided.",
+          "result": "PASS",
+          "reason": "Item 2 requires 'Paper context (required). The title plus the abstract, or a 3 to 5 sentence summary'."
+        }
+      ]
     },
     {
       "id": "c6-pushback-tone-redirect",
       "checks": [
-        {"check": "Declines to write an angry or dismissive response.", "result": "PASS", "reason": "Explicitly states it will not draft an angry or dismissive response."},
-        {"check": "Acknowledges the author's disagreement with the reviewer and validates the substance of the pushback.", "result": "PASS", "reason": "States 'there is a genuine methodological argument on your side' before drafting."},
-        {"check": "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.", "result": "PASS", "reason": "Three substantive paragraphs explaining random-effects rationale, field norms, and subgroup analyses."},
-        {"check": "Maintains a collegial tone in the drafted response.", "result": "PASS", "reason": "Opens with thanks, uses 'we respectfully maintain', addresses reviewer concern as 'important'."},
-        {"check": "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence.", "result": "PASS", "reason": "Maintains meta-analytic pooling throughout; does not recommend switching to narrative synthesis."}
-      ],
-      "passed": 5,
-      "total": 5
+        {
+          "check": "Declines to write an angry or dismissive response.",
+          "result": "PASS",
+          "reason": "'I've kept the letter respectful rather than telling the reviewer they're wrong', and explains why."
+        },
+        {
+          "check": "Acknowledges the author's disagreement with the reviewer and validates the substance of the pushback.",
+          "result": "PASS",
+          "reason": "'You can disagree firmly here ... you are not switching to a narrative synthesis, and the letter says why'. The letter builds on the author's two points (heterogeneity is normal; random effects are designed for it)."
+        },
+        {
+          "check": "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.",
+          "result": "PASS",
+          "reason": "The 'Second' paragraph explains that a random-effects model 'does not assume that all studies share one true effect' and accounts for between-study variance. It opens 'We thank the reviewer' and concedes 'The I² of 78% is substantial'."
+        },
+        {
+          "check": "Maintains a collegial tone in the drafted response.",
+          "result": "PASS",
+          "reason": "Measured wording throughout: 'we respectfully disagree', 'we agree that it must be considered'."
+        },
+        {
+          "check": "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence.",
+          "result": "PASS",
+          "reason": "Keeps the meta-analysis: 'we have kept the quantitative synthesis for the following reasons'. The summary option is 'retained the random-effects meta-analysis'."
+        }
+      ]
+    },
+    {
+      "id": "c7-author-supplied-changes",
+      "checks": [
+        {
+          "check": "R1.1 is classified Accept and its response states the exclusion count (27) and criterion (fewer than 5 valid nights) in Section 2.2, exactly as given.",
+          "result": "PASS",
+          "reason": "R1.1 response: 'We now report in Section 2.2 that 27 participants were excluded because they had fewer than 5 valid nights of actigraphy data', exactly as given. The letter format has no explicit 'Accept' label, but the response is a full acceptance with the change made, which is the skill's definition of Accept."
+        },
+        {
+          "check": "R1.2 is classified Partial and its response says caffeine was not collected and that it was added as a limitation in Section 4.3, paragraph 2.",
+          "result": "PASS",
+          "reason": "R1.2 response: 'we did not collect caffeine intake data' and 'added the absence of caffeine data as a limitation in Section 4.3, paragraph 2'. It accepts the concern and makes a narrower change, which is Partial. There is no explicit label, as with R1.1."
+        },
+        {
+          "check": "Adds no numbers, analyses, sections or citations beyond what the user supplied.",
+          "result": "PASS",
+          "reason": "The only numbers and sections are 27, 5 valid nights, Section 2.2 and Section 4.3 paragraph 2. 'Models, which control for prior GPA' comes from the summary. No new analyses or citations."
+        },
+        {
+          "check": "Contains no bracketed placeholders, because the user supplied every needed detail.",
+          "result": "PASS",
+          "reason": "There are no square-bracket placeholders anywhere in the output."
+        },
+        {
+          "check": "Includes an opening paragraph and a closing summary of major changes.",
+          "result": "PASS",
+          "reason": "Opening paragraph ('Thank you for the opportunity to revise our manuscript...') and a 'Summary of major changes' with two bullets."
+        }
+      ]
     }
   ],
-  "total_passed": 33,
-  "total_checks": 33,
-  "pass_rate": 1.0
+  "total_passed": 38,
+  "total_checks": 39,
+  "pass_rate": 0.9744,
+  "notes": "Re-run after eval c1 in the first run passed an output that invented methods details. One FAIL kept as graded: in c2 the skill asserted the study was powered as a full study, which the user never said. Close calls graded PASS are listed in the grader report: c1 states findings are unchanged; c7 has no explicit A/B/C labels; c4 assumes a count of pre-periods in a suggested argument."
 }
