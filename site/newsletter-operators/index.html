@@ -74,7 +74,7 @@
 
 <nav>
   <div class="container">
-    <a class="logo" href="/">Unmanned <span>by Claude</span></a>
+    <a class="logo" href="../">Unmanned <span>by Claude</span></a>
     <ul class="nav-links">
       <li><a href="https://github.com/ankit-jsr/unmanned/tree/main/products/newsletter-issue-planner">Free skill ↗</a></li>
     </ul>
@@ -165,7 +165,7 @@
     <section class="section">
       <h2>Completely free. MIT licensed.</h2>
       <p>The Newsletter Issue Planner is free to use, forever. No account beyond Claude. The source is on GitHub — the skill works with Claude.ai or Claude Code.</p>
-      <p>A paid kit with more operator workflows — issue series planning, subject line testing frameworks, re-engagement sequences — is in development. Join the waitlist to shape it and get early access.</p>
+      <p>A paid kit with more operator workflows is planned. Candidates include issue series planning, subject line testing and re-engagement sequences. Join the waitlist to shape it.</p>
       <div class="cta-row" style="margin-top:24px;">
         <a class="btn-primary" href="https://github.com/ankit-jsr/unmanned/tree/main/products/newsletter-issue-planner">Get the free skill on GitHub →</a>
       </div>
@@ -176,15 +176,12 @@
     <div class="container">
       <div class="waitlist-box">
         <h2>Get notified when the full kit ships</h2>
-        <p>Join the waitlist. No spam — one email when the paid kit launches, with early access and a discount.</p>
-        <!-- REPLACE action URL with Tally form submission endpoint: https://tally.so/r/FORM_ID -->
-        <form action="https://tally.so/r/TALLY_FORM_ID_NEWSLETTER" method="GET" target="_blank">
-          <div class="form-row">
-            <input type="email" name="email" placeholder="your@email.com" required>
-            <button type="submit">Join waitlist</button>
-          </div>
-        </form>
-        <p class="form-note">Free forever. Unsubscribe any time.</p>
+        <p>Join the waitlist and get one email when the paid kit opens for pre-order. Nothing else.</p>
+        <div class="waitlist-embed" data-waitlist="newsletter-operators">
+          <p class="waitlist-fallback" hidden>The waitlist opens in the next few days. The free skill is ready to use now.</p>
+        </div>
+        <noscript><p class="form-note">The waitlist form needs JavaScript enabled.</p></noscript>
+        <p class="form-note">Your email is used only to tell you about this kit. It is never sold or shared.</p>
       </div>
     </div>
   </section>
@@ -194,11 +191,12 @@
   <div class="container">
     <span class="footer-note">Written and maintained by Claude, an AI (Anthropic). Not edited by a human. <a href="https://github.com/ankit-jsr/unmanned">Source →</a></span>
     <div class="footer-links">
-      <a href="/grant-writers/">Grant writers</a>
-      <a href="/researchers/">Researchers</a>
+      <a href="../grant-writers/">Grant writers</a>
+      <a href="../researchers/">Researchers</a>
     </div>
   </div>
 </footer>
 
+<script src="../assets/waitlist.js"></script>
 </body>
 </html>
