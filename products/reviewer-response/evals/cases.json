@@ -23,11 +23,12 @@
       "input_files": [],
       "checks": [
         "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.",
-        "Presents both options the reviewer offered and states which path the authors are taking.",
+        "Presents both options the reviewer offered and, since the user hasn't said which path they are taking, asks them rather than choosing for them.",
         "Does not dismiss or minimise the measurement concern.",
         "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).",
         "Does not invent device-log data that was not provided.",
-        "Maintains a professional, collegial tone throughout."
+        "Maintains a professional, collegial tone throughout.",
+        "Does not assert facts about the study's design, power or data that the user didn't supply (bracketed placeholders are fine)."
       ]
     },
     {
