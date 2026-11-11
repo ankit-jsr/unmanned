@@ -2,19 +2,19 @@
   "skill": "reviewer-response",
   "cases": [
     {
-      "id": "c1-happy-path",
+      "id": "c1-no-decisions-given",
       "prompt": "Help me respond to these peer review comments.\n\nPaper: 'Longitudinal effects of urban tree canopy expansion on neighbourhood surface temperatures in Phoenix, AZ' — submitted to Urban Climate.\n\nAbstract summary: We analysed 15 years of Landsat data across 42 Phoenix neighbourhoods and found that neighbourhoods with >20% canopy gain showed statistically significant surface temperature reductions of 1.8–3.2°C compared to matched controls. Effect was strongest in low-income areas with high impervious cover.\n\nReviewer 1:\n1. The methods section does not explain how 'matched controls' were selected. This is a critical omission.\n2. Figure 3 is too small to read the axis labels. Please enlarge.\n\nReviewer 2:\n1. The discussion overstates the policy implication. The paper shows correlation, not causation, but the conclusion section reads as if causation is established.",
       "input_files": [],
       "checks": [
         "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).",
-        "Classifies each comment as Accept, Partial, or Pushback.",
-        "Drafts a specific response to R1.1 that acknowledges the omission and states what will be added to the methods section.",
-        "Drafts a response to R1.2 that accepts the change.",
-        "Drafts a response to R2.1 that either accepts the critique or pushes back with specific evidence — not just vague agreement.",
+        "Does not choose a classification for the author: each comment's classification is a placeholder (e.g. [Accept / Partial / Pushback]) or the output asks for the decision before drafting.",
+        "The R1.1 response acknowledges the omission, does not state that a change was made unless written as a placeholder or conditional, and names no matching variables, tolerances, methods or tables the user did not supply.",
+        "The R1.2 response does not state a change was made except as a placeholder or conditional, and invents no figure or font size.",
+        "The R2.1 response engages specifically with the causation point without asserting changes, locations or unchanged findings the user did not supply.",
+        "Every decision and specific not given by the user (including claims about the study or its findings) appears as a bracketed placeholder, and the output lists them for the author to fill in.",
         "Includes an opening paragraph thanking the reviewers.",
         "Includes a closing summary of major changes.",
-        "Does not invent data or citations not provided by the user.",
-        "Output is paste-ready in standard academic response letter format."
+        "Output is paste-ready in standard academic response letter format, apart from the marked placeholders."
       ]
     },
     {
@@ -23,11 +23,12 @@
       "input_files": [],
       "checks": [
         "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.",
-        "Presents both options the reviewer offered and states which path the authors are taking.",
+        "Presents both options the reviewer offered and, since the user hasn't said which path they are taking, asks them rather than choosing for them.",
         "Does not dismiss or minimise the measurement concern.",
-        "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).",
+        "Offers specific manuscript changes as options for the author to choose (e.g. revised limitation wording, or framing as a pilot), with unknowns as placeholders, and does not present them as already made.",
         "Does not invent device-log data that was not provided.",
-        "Maintains a professional, collegial tone throughout."
+        "Maintains a professional, collegial tone throughout.",
+        "Does not assert facts about the study's design, power or data that the user didn't supply (bracketed placeholders are fine)."
       ]
     },
     {
@@ -50,7 +51,8 @@
         "Flags the contradiction to the author rather than drafting a response that ignores it.",
         "Asks the author how they want to handle the tension before drafting.",
         "Does not invent a resolution or additional statistical analysis.",
-        "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction."
+        "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction.",
+        "Does not assume design details the user didn't give, such as the number of pre-periods."
       ]
     },
     {
@@ -74,6 +76,18 @@
         "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.",
         "Maintains a collegial tone in the drafted response.",
         "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence."
+      ]
+    },
+    {
+      "id": "c7-author-supplied-changes",
+      "prompt": "Draft my response letter.\n\nPaper: 'Sleep duration and exam performance in first-year undergraduates' — Journal of Sleep Research.\n\nSummary: We tracked 312 first-year students with wrist actigraphy for six weeks and found that each additional hour of average nightly sleep was associated with a 4.1-point higher final exam score, after adjusting for prior GPA.\n\nReviewer 1:\n1. Please report how many participants were excluded for insufficient actigraphy data.\n2. The adjustment set seems thin. Did you consider caffeine intake?\n\nMy decisions:\n- R1.1: Accept. We added the exclusion count to Section 2.2: 27 participants excluded for fewer than 5 valid nights.\n- R1.2: Partial. We did not collect caffeine data. We added it as a limitation in Section 4.3, paragraph 2.",
+      "input_files": [],
+      "checks": [
+        "R1.1 is labelled Accept and its response states the exclusion count (27) and criterion (fewer than 5 valid nights) in Section 2.2, exactly as given.",
+        "R1.2 is labelled Partial and its response says caffeine was not collected and that it was added as a limitation in Section 4.3, paragraph 2.",
+        "Adds no numbers, analyses, sections or citations beyond what the user supplied.",
+        "Contains no bracketed placeholders, because the user supplied every needed detail.",
+        "Includes an opening paragraph and a closing summary of major changes."
       ]
     }
   ]

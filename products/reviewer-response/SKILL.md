@@ -22,10 +22,24 @@ not before.
    label them (Reviewer 1, Reviewer 2, etc.) before pasting.
 2. **Paper context** — the paper title plus abstract, or a 3–5 sentence summary of the
    paper's main argument and findings.
-3. **Journal name** (optional) — used to match the journal's typical response tone.
+3. **Your decisions and changes** — for each comment: accept, partially accept or push back,
+   and what you actually changed (with the section, figure or line if you know it).
+4. **Journal name** (optional) — used to match the journal's typical response tone.
 
 If the reviewer comments are missing, ask for them before proceeding. If the paper context
 is missing, ask for the title and a brief summary.
+
+If your decisions or changes are missing for some comments, still draft the letter, but:
+- Never decide for the author. Where the decision is missing, mark the classification
+  `[Accept / Partial / Pushback]` and write the response so it works once they choose.
+- Never say a change "has been made" unless the author said so. Write it as a placeholder
+  instead, e.g. "We have [added / will add] a description of how matched controls were selected".
+- Write every unknown specific as a bracketed placeholder, e.g. `[section]`, `[matching
+  criteria you used]`, `[new figure size]`. This covers claims about the study too, such
+  as its design, power or whether findings changed.
+
+End with a short list of the decisions and placeholders to fill in. Never fill a gap with a
+plausible-sounding detail.
 
 ## Steps
 
@@ -33,15 +47,16 @@ is missing, ask for the title and a brief summary.
    point a reviewer raises. If a comment bundles multiple requests, split them.
 
 2. **Classify each comment** as one of:
-   - **(A) Accept** — the author agrees and has made the change.
+   - **(A) Accept** — the author agrees and has made (or will make) the change.
    - **(B) Partial** — the author accepts the concern but proposes a narrower change.
    - **(C) Pushback** — the author respectfully disagrees and will explain why.
 
 3. **Draft a response for each comment.** Each response must:
    - Acknowledge the reviewer's point in one sentence.
-   - State clearly what was done (or why the author disagrees), with specifics.
-   - For (A) and (B): say exactly where in the manuscript the change appears (section,
-     paragraph, or line if known).
+   - State clearly what was done (or why the author disagrees), using only specifics the
+     author gave. Anything not given becomes a bracketed placeholder.
+   - For (A) and (B): say where in the manuscript the change appears, if the author said;
+     otherwise use `[location]`.
    - For (C): cite evidence (from the paper, the literature, or logic) for the disagreement.
      Do not dismiss the reviewer — engage with the substance.
 
@@ -60,6 +75,7 @@ A complete, paste-ready response letter formatted as:
 > ---
 > **Reviewer 1**
 > **Comment R1.1:** [quoted comment]
+> **Classification:** Accept / Partial / Pushback (or `[Accept / Partial / Pushback]` if not given)
 > **Response:** [drafted response]
 > ...
 >
@@ -71,6 +87,8 @@ A complete, paste-ready response letter formatted as:
 
 - Do not invent citations, data, or results to support a pushback — only use what the
   author provided.
+- Do not invent what the author changed: no made-up methods details, numbers, thresholds,
+  section or paragraph numbers, figure sizes, or supplementary tables. Use placeholders.
 - Do not change the paper's scientific conclusions to satisfy a reviewer.
 - Do not write an angry or sarcastic response, even if the reviewer comment was unfair.
 - Do not proceed if the reviewer comments are absent; ask for them first.
