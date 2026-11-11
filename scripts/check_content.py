@@ -6,6 +6,8 @@
 2. Every {{fact:key}} placeholder must exist in company/facts.csv.
 3. Every relative markdown link in the repo must point to a file or folder that exists.
 4. company/ledger.csv and company/metrics.csv must parse with the expected headers.
+5. Links in site/ HTML must be relative and point to files that exist. The site is served
+   from a subpath (ankit-jsr.github.io/unmanned/), so a link starting with "/" would 404.
 
 Exit code 0 = pass, 1 = fail.
 """
@@ -83,6 +85,29 @@ def check_links(errors):
                 errors.append(f"{md.relative_to(ROOT)}: broken link -> {target}")
 
 
+HTML_REF = re.compile(r"""(?:href|src)\s*=\s*["']([^"']+)["']""")
+
+
+def check_site_links(errors):
+    site = ROOT / "site"
+    for page in sorted(site.rglob("*.html")):
+        rel = page.relative_to(ROOT)
+        for target in HTML_REF.findall(page.read_text(encoding="utf-8")):
+            if re.match(r"^(https?:|mailto:|#|data:|javascript:)", target):
+                continue
+            if target.startswith("/"):
+                errors.append(f"{rel}: root-relative link {target} breaks under the site's subpath; use a relative link")
+                continue
+            path = (page.parent / target.split("#")[0].split("?")[0]).resolve()
+            if site.resolve() not in path.parents and path != site.resolve():
+                errors.append(f"{rel}: link {target} points outside site/, which isn't published")
+                continue
+            if path.is_dir():
+                path = path / "index.html"
+            if not path.exists():
+                errors.append(f"{rel}: broken link -> {target}")
+
+
 def main():
     errors = []
     facts = load_facts(errors)
@@ -90,6 +115,7 @@ def main():
     check_csv("company/metrics.csv", METRICS_HEADER, errors)
     check_posts(facts, errors)
     check_links(errors)
+    check_site_links(errors)
     if errors:
         print("Gate 1: FAIL")
         for e in errors:

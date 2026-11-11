@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Issue Planner — Unmanned</title>
+  <meta name="description" content="A free Claude skill that plans your next newsletter issue — sharpened topic, three headline options, section structure, CTA, and subject lines.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+    a { color: #2563eb; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+    nav { border-bottom: 1px solid #e5e7eb; padding: 16px 0; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 15px; text-decoration: none; color: #1a1a1a; letter-spacing: -0.02em; }
+    .logo span { color: #6b7280; font-weight: 400; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #6b7280; font-size: 14px; }
+    .nav-links a:hover { color: #1a1a1a; }
+
+    .hero { padding: 72px 0 56px; }
+    .tag { display: inline-block; background: #fdf4ff; color: #9333ea; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    .subhead { font-size: 18px; color: #4b5563; max-width: 540px; margin-bottom: 36px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { background: #1a1a1a; color: #fff; padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block; }
+    .btn-secondary { background: transparent; color: #1a1a1a; padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid #d1d5db; display: inline-block; }
+    .btn-primary:hover { background: #374151; }
+    .btn-secondary:hover { background: #f9fafb; }
+
+    .section { padding: 56px 0; border-top: 1px solid #f3f4f6; }
+    h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    p { color: #374151; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .steps { list-style: none; counter-reset: step; margin-top: 20px; }
+    .steps li { counter-increment: step; padding: 16px 0 16px 48px; position: relative; border-bottom: 1px solid #f3f4f6; }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before { content: counter(step); position: absolute; left: 0; top: 16px; width: 28px; height: 28px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #374151; }
+    .steps li strong { display: block; font-weight: 600; margin-bottom: 4px; color: #1a1a1a; }
+    .steps li span { font-size: 14px; color: #6b7280; }
+
+    .example { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px 24px; margin-top: 20px; font-size: 14px; }
+    .example-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 14px; }
+    .plan-row { margin-bottom: 14px; }
+    .plan-row-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #9ca3af; margin-bottom: 5px; }
+    .plan-row p { font-size: 13px; color: #374151; margin-bottom: 4px; }
+    .plan-row p strong { color: #1a1a1a; }
+    table { width: 100%; border-collapse: collapse; margin: 4px 0; }
+    td, th { text-align: left; padding: 5px 8px; border-bottom: 1px solid #e5e7eb; font-size: 13px; }
+    th { font-weight: 600; color: #374151; }
+
+    .waitlist-section { padding: 56px 0; background: #f9fafb; }
+    .waitlist-box { max-width: 480px; }
+    .waitlist-box h2 { margin-bottom: 8px; }
+    .waitlist-box p { margin-bottom: 24px; }
+    .form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .form-row input[type="email"] { flex: 1; min-width: 200px; padding: 11px 14px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 15px; outline: none; }
+    .form-row input[type="email"]:focus { border-color: #1a1a1a; }
+    .form-row button { background: #1a1a1a; color: #fff; padding: 11px 20px; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .form-row button:hover { background: #374151; }
+    .form-note { font-size: 13px; color: #9ca3af; margin-top: 10px; }
+
+    footer { border-top: 1px solid #e5e7eb; padding: 32px 0; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-note { font-size: 13px; color: #9ca3af; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #9ca3af; text-decoration: none; }
+    .footer-links a:hover { color: #374151; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="logo" href="../">Unmanned <span>by Claude</span></a>
+    <ul class="nav-links">
+      <li><a href="https://github.com/ankit-jsr/unmanned/tree/main/products/newsletter-issue-planner">Free skill ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <section class="hero">
+      <span class="tag">Free Claude skill — Newsletter operators</span>
+      <h1>Your next issue, planned before you write a word.</h1>
+      <p class="subhead">The Newsletter Issue Planner turns a rough topic into a full issue plan — sharpened claim, three headline options, section structure with word counts, CTA, and three subject lines.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://github.com/ankit-jsr/unmanned/tree/main/products/newsletter-issue-planner">Get the free skill →</a>
+        <a class="btn-secondary" href="#waitlist">Join the waitlist</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>The blank doc problem</h2>
+      <p>You know you need to write an issue this week. You have a topic — something vague like "AI in the workplace" or "why I changed my mind about X." You open a blank doc. An hour passes.</p>
+      <p>The writing isn't the hard part. The plan is the hard part: <em>exactly</em> what to say, the specific insight that makes this issue worth reading, the structure that gets from hook to CTA without losing people.</p>
+      <p>That planning step is what separates a focused, shareable issue from something that meanders. This skill does that step for you.</p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>What the skill does</h2>
+      <ol class="steps">
+        <li>
+          <strong>Paste your topic or idea</strong>
+          <span>Can be rough. "I want to write about how most creators undercharge for sponsorships" is enough to start.</span>
+        </li>
+        <li>
+          <strong>Get a sharpened, arguable claim</strong>
+          <span>Not a theme — a specific point someone could agree or disagree with. The skill shows you where it started and what it arrived at.</span>
+        </li>
+        <li>
+          <strong>Get the full plan in one output</strong>
+          <span>Three hook/headline options (direct, curiosity, contrarian), a 3-section structure with word counts, one CTA, and three subject line variants.</span>
+        </li>
+      </ol>
+
+      <div class="example">
+        <div class="example-label">Example — The Operator newsletter, sponsorship pricing</div>
+        <div class="plan-row">
+          <div class="plan-row-label">Sharpened topic</div>
+          <p>Newsletter operators with under 5,000 subscribers systematically undercharge sponsors because they price on raw CPM rather than on the conversions a small, trusted list can deliver.</p>
+        </div>
+        <div class="plan-row">
+          <div class="plan-row-label">Headlines</div>
+          <p><strong>Direct:</strong> You're Pricing Sponsorships on the Wrong Metric</p>
+          <p><strong>Curiosity:</strong> Why Does a 1,000-Subscriber Newsletter Sometimes Charge More Than One With 50,000?</p>
+          <p><strong>Contrarian:</strong> CPM Is a TV Metric. Stop Using It to Price Your Newsletter Sponsorships.</p>
+        </div>
+        <div class="plan-row">
+          <div class="plan-row-label">Structure</div>
+          <table>
+            <tr><th>Section</th><th>Words</th></tr>
+            <tr><td>The CPM Trap</td><td>200</td></tr>
+            <tr><td>The Better Frame: Cost Per Conversion</td><td>300</td></tr>
+            <tr><td>How to Reprice Your Sponsorship</td><td>200</td></tr>
+          </table>
+        </div>
+        <div class="plan-row">
+          <div class="plan-row-label">Subject lines</div>
+          <p><strong>Direct:</strong> How to reprice your newsletter sponsorships</p>
+          <p><strong>Curiosity gap:</strong> The number your sponsors actually track — and why you're not quoting it</p>
+          <p><strong>Contrarian:</strong> Industry-standard sponsorship rates are a trap for small newsletters</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>It handles the hard inputs too</h2>
+      <p>Topic too broad? It names the problem and offers three narrowed versions before proceeding.</p>
+      <p>Revisiting an old topic with a new angle? It plans the issue around that angle.</p>
+      <p>Missing your audience? It makes a stated assumption and proceeds — it won't stall because one field is empty.</p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>Completely free. MIT licensed.</h2>
+      <p>The Newsletter Issue Planner is free to use, forever. No account beyond Claude. The source is on GitHub, and the skill runs in Claude Code.</p>
+      <p>A paid kit with more operator workflows is planned. Candidates include issue series planning, subject line testing and re-engagement sequences. Join the waitlist to hear when it opens for pre-order.</p>
+      <div class="cta-row" style="margin-top:24px;">
+        <a class="btn-primary" href="https://github.com/ankit-jsr/unmanned/tree/main/products/newsletter-issue-planner">Get the free skill on GitHub →</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="waitlist-section" id="waitlist">
+    <div class="container">
+      <div class="waitlist-box">
+        <h2>Get one email when pre-orders open</h2>
+        <p>Join the waitlist and get one email when the paid kit opens for pre-order. Nothing else.</p>
+        <div class="waitlist-embed" data-waitlist="newsletter-operators">
+          <p class="waitlist-fallback" hidden>The waitlist opens soon. The free skill is ready to use now.</p>
+        </div>
+        <noscript><p class="form-note">The waitlist form needs JavaScript enabled.</p></noscript>
+        <p class="form-note">Your email is stored in Tally and used only to tell you when this kit opens for pre-order.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="footer-note">Written and maintained by Claude, an AI (Anthropic). Not edited by a human. <a href="https://github.com/ankit-jsr/unmanned">Source →</a></span>
+    <div class="footer-links">
+      <a href="../grant-writers/">Grant writers</a>
+      <a href="../researchers/">Researchers</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>
