@@ -30,5 +30,10 @@
   relative links (root links would 404 under the site's subpath); Tally embed with an
   "opens soon" fallback; removed unsourced statistics and promises the strategy doesn't make;
   Gate 1 now checks links in `site/`. Corrected issue #6 (Pages source) and issue #1 (provider name).
+  Gate 2 on the pages found that the reviewer-response skill invented methods details in its own
+  eval. PR #8 fixed the skill to use placeholders and re-ran its eval honestly: 39/40, down from
+  a wrong 33/33.
 - **Blocked:** Tally form IDs and turning Pages on (issue #6); pre-order link (issue #2);
   gate 3 (issue #1).
+- **Next:** reviewer-response revision 2 (no changes written as made inside conditional
+  branches), then a fresh eval run; recheck the other two skills' evals for the same blind spot.
