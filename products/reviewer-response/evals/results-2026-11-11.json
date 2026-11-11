@@ -73,8 +73,8 @@
         },
         {
           "check": "Offers specific manuscript changes as options for the author to choose (e.g. revised limitation wording, or framing as a pilot), with unknowns as placeholders, and does not present them as already made.",
-          "result": "PASS",
-          "reason": "Offers revised limitation text, a conservative/lower-bounds framing, rejecting the pilot label and a narrower alternative as conditional branches ('[If accepting:]', '[If pushing back ...]'). Changes are written as '[added / will add]' or '[reframed / will reframe]' with '[location]'."
+          "result": "FAIL",
+          "reason": "Regraded at gate 2: inside decision branches R1.1 says, unbracketed, 'we now state that our estimates should be read as conservative' and 'We now set out both possibilities in [location]', and R1.2 says 'Instead, we have [...]', so changes are presented as made."
         },
         {
           "check": "Does not invent device-log data that was not provided.",
@@ -239,9 +239,9 @@
       ]
     }
   ],
-  "total_passed": 40,
+  "total_passed": 39,
   "total_checks": 40,
-  "pass_rate": 1.0,
+  "pass_rate": 0.975,
   "outputs": "evals/outputs-2026-11-11/",
-  "notes": "Third version of this run. Run 1 (33/33) passed an output that invented methods details; run 2 (38/39) still let the skill choose decisions for the author. This run follows the fix. Close calls graded PASS: c4 asks its questions, then adds a placeholder-only skeleton letter; sentences that follow a bracketed change (e.g. 'The revised figure appears at [location]') were read as part of that placeholder; c2 restates study facts the prompt implies (prospective follow-up, standardised tasks)."
+  "notes": "Third version of this run. Run 1 (33/33) passed an output that invented methods details; run 2 (38/39) still let the skill choose decisions for the author. This run follows the fix. Close calls graded PASS: c4 asks its questions, then adds a placeholder-only skeleton letter; sentences that follow a bracketed change (e.g. 'The revised figure appears at [location]') were read as part of that placeholder; c2 restates study facts the prompt implies (prospective follow-up, standardised tasks). Gate 2 regraded one c2 check to FAIL: inside conditional branches the skill still wrote changes as made. Next revision: require [have ... / will ...] inside branches too, bracket follow-on sentences, say the skill 'works best' after decisions, and make the 'stronger manuscript' line conditional; then re-run."
 }
