@@ -1,7 +1,7 @@
 {
   "skill": "reviewer-response",
   "run_date": "2026-11-11",
-  "method": "fresh subagent per case with only SKILL.md and the prompt; separate grader",
+  "method": "fresh subagent per case with only SKILL.md and the prompt; separate grader; one check regraded at gate 2",
   "cases": [
     {
       "id": "c1-no-decisions-given",
