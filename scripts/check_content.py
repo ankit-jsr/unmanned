@@ -99,6 +99,9 @@ def check_site_links(errors):
                 errors.append(f"{rel}: root-relative link {target} breaks under the site's subpath; use a relative link")
                 continue
             path = (page.parent / target.split("#")[0].split("?")[0]).resolve()
+            if site.resolve() not in path.parents and path != site.resolve():
+                errors.append(f"{rel}: link {target} points outside site/, which isn't published")
+                continue
             if path.is_dir():
                 path = path / "index.html"
             if not path.exists():

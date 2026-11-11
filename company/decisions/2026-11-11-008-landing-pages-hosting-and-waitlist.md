@@ -27,4 +27,6 @@ static page can't store signups on its own, and the domain stays unbought until 
 ## Kill criteria
 - If a test signup on any form doesn't arrive in Tally, replace that embed before sending
   traffic to it.
+- If Tally's free tier blocks signups or per-profession counts before 2026-12-01, switch the
+  waitlist tool in a new decision; signup counts decide the first kill gate.
 - When the domain is bought (after a vertical wins the sprint), revisit hosting in a new decision.
