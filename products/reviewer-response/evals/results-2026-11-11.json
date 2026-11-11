@@ -9,47 +9,47 @@
         {
           "check": "Assigns unique IDs to all three comments (e.g. R1.1, R1.2, R2.1).",
           "result": "PASS",
-          "reason": "Labels the comments 'Comment R1.1', 'Comment R1.2' and 'Comment R2.1'."
+          "reason": "Comments are labelled R1.1, R1.2 and R2.1."
         },
         {
-          "check": "Classifies each comment as Accept, Partial, or Pushback, or asks the author to confirm the classification.",
+          "check": "Does not choose a classification for the author: each comment's classification is a placeholder (e.g. [Accept / Partial / Pushback]) or the output asks for the decision before drafting.",
           "result": "PASS",
-          "reason": "States 'I've drafted all three comments as accepted (A)', and the note after the letter asks the author to confirm or change R2.1 to Partial/Pushback."
+          "reason": "All three classifications are `[Accept / Partial / Pushback]`, and the decisions list asks the author to choose each."
         },
         {
-          "check": "The R1.1 response acknowledges the omission and says a description of how matched controls were selected has been added, without stating any matching variables, tolerances, method names or table numbers the user did not supply (placeholders are fine).",
+          "check": "The R1.1 response acknowledges the omission, does not state that a change was made unless written as a placeholder or conditional, and names no matching variables, tolerances, methods or tables the user did not supply.",
           "result": "PASS",
-          "reason": "R1.1 says it 'should have been described explicitly' and 'We have added a description of the matching procedure to [location]'. Method, criteria, thresholds/calipers and any table/supplement are all bracketed ('[matching method...]', '[matching criteria/covariates used]'). No named method, variable, tolerance or table number."
+          "reason": "R1.1 acknowledges 'readers need to know how the matched controls were selected'; the change is '[have added / will add]' and every matching detail is bracketed ('[matching criteria you used]', '[matching method and any thresholds or calipers]', '[number of control neighbourhoods ...]'). Nothing is invented."
         },
         {
-          "check": "The R1.2 response accepts the change without inventing a specific new figure size or font size.",
+          "check": "The R1.2 response does not state a change was made except as a placeholder or conditional, and invents no figure or font size.",
           "result": "PASS",
-          "reason": "R1.2 says 'We have revised Figure 3 by [what you changed, e.g. new figure size, larger axis label font...]'. No size or font value is given."
+          "reason": "R1.2 uses '[have enlarged / will enlarge]', '[new figure size or layout]' and '[new font size]'. No sizes are invented. 'The revised figure appears at [location]' follows from the bracketed change and does not claim it on its own."
         },
         {
-          "check": "The R2.1 response engages specifically with the causation point, without inventing section, paragraph or sentence locations the user did not supply.",
+          "check": "The R2.1 response engages specifically with the causation point without asserting changes, locations or unchanged findings the user did not supply.",
           "result": "PASS",
-          "reason": "R2.1 engages with the point ('supports an association ... not a definitive causal effect'). Locations are '[location(s), e.g. the Discussion and Conclusion sections...]', and the reviewer named those sections, so nothing is invented."
+          "reason": "R2.1 speaks to 'how far our findings can support causal and policy conclusions' and gives Accept/Partial and Pushback branches. Every change, location and piece of evidence is bracketed, and no findings are called unchanged."
         },
         {
-          "check": "Every specific not given by the user appears as a bracketed placeholder, and the output lists the placeholders for the author to fill in.",
+          "check": "Every decision and specific not given by the user (including claims about the study or its findings) appears as a bracketed placeholder, and the output lists them for the author to fill in.",
           "result": "PASS",
-          "reason": "Every unknown (method, criteria, thresholds, figure change, locations, causal rewording, policy framing) is bracketed and listed in the 12-item 'Placeholders to fill in'. Numbers used (>20%, 1.8–3.2°C) are from the prompt. Borderline but acceptable: the unbracketed 'Our empirical findings are unchanged' is a claim the author didn't make, though it is implied by a wording-only change."
+          "reason": "Decisions, change status, locations, matching details, figure sizes and evidence are all bracketed. The 'Before sending, fill in the following' section lists them, and it notes 'I have not supplied any evidence for a causal reading'."
         },
         {
           "check": "Includes an opening paragraph thanking the reviewers.",
           "result": "PASS",
-          "reason": "Opens with 'We thank the editor and both reviewers for their careful reading...'."
+          "reason": "Opening: 'We thank the Editor and both reviewers for their careful reading of our manuscript ...'."
         },
         {
           "check": "Includes a closing summary of major changes.",
           "result": "PASS",
-          "reason": "Has a 'Summary of major changes' section with bullets, locations bracketed."
+          "reason": "Has a 'Summary of major changes' section with conditional bracketed bullets for Methods, Discussion/Conclusion and Figure 3."
         },
         {
           "check": "Output is paste-ready in standard academic response letter format, apart from the marked placeholders.",
           "result": "PASS",
-          "reason": "The letter sits between '---' separators in the 'Dear Editor and Reviewers' / Comment / Response / Summary format, so it can be pasted once the marked placeholders are filled."
+          "reason": "Uses the standard 'Dear Editor and Reviewers' letter with Reviewer, Comment, Classification and Response blocks. The only incomplete parts are marked brackets and branches labelled '[If Accept or Partial, use this:]'."
         }
       ]
     },
@@ -59,37 +59,37 @@
         {
           "check": "Acknowledges the limitation the reviewer identified (parental diary underestimation) substantively.",
           "result": "PASS",
-          "reason": "R1.1 says 'relying only on parental diary reports is an important limitation' and discusses the direction of bias, including the caveat that under-reporting might differ by SES or parental education."
+          "reason": "R1.1 says 'We agree that parental report is not a direct measure of exposure' and plans a limitations discussion. The preamble works through how under-reporting affects the estimates."
         },
         {
           "check": "Presents both options the reviewer offered and, since the user hasn't said which path they are taking, asks them rather than choosing for them.",
           "result": "PASS",
-          "reason": "Splits (a) and (b) into R1.2 and R1.3 with an 'Option if...' block for each. It does not choose: 'Please tell me which route you're taking', and placeholder 1 asks 'which of (a) or (b) you are answering'."
+          "reason": "R1.2 covers option (a) and R1.3 covers option (b), each with branches. The output asks 'Please tell me which option you're taking, if either' instead of choosing."
         },
         {
           "check": "Does not dismiss or minimise the measurement concern.",
           "result": "PASS",
-          "reason": "Takes the concern seriously throughout, e.g. 'we agree that the effect sizes should be interpreted with the measurement limitation in mind'. Even the Pushback option offers an alternative step."
+          "reason": "It calls this an 'important point' and plans a limitation discussion. Its question about the direction of bias raises the chance that the estimates are inflated, so it does not play down the concern."
         },
         {
-          "check": "Suggests specific manuscript changes (e.g. revised limitation section language, or framing as pilot).",
+          "check": "Offers specific manuscript changes as options for the author to choose (e.g. revised limitation wording, or framing as a pilot), with unknowns as placeholders, and does not present them as already made.",
           "result": "PASS",
-          "reason": "Proposes concrete edits, e.g. revise '[Abstract, Discussion] to state that ... the reported effect sizes may be underestimates', and expand the limitations discussion of parent-reported screen time."
+          "reason": "Offers revised limitation text, a conservative/lower-bounds framing, rejecting the pilot label and a narrower alternative as conditional branches ('[If accepting:]', '[If pushing back ...]'). Changes are written as '[added / will add]' or '[reframed / will reframe]' with '[location]'."
         },
         {
           "check": "Does not invent device-log data that was not provided.",
           "result": "PASS",
-          "reason": "All device-log details are placeholders ('subsample of [n] children', '[device/app used]', '[correlation / mean difference]'). No device data is invented."
+          "reason": "Device-log results are fully bracketed: 'a subsample of [n]', '[correlated at (statistic)]', '[remained unchanged / changed as follows ...]'. No data is invented."
         },
         {
           "check": "Maintains a professional, collegial tone throughout.",
           "result": "PASS",
-          "reason": "Collegial throughout ('We appreciate the reviewer's suggestion', 'We thank the reviewer for this alternative')."
+          "reason": "Collegial throughout, for example 'We respectfully suggest that a pilot framing would not describe the study accurately'."
         },
         {
           "check": "Does not assert facts about the study's design, power or data that the user didn't supply (bracketed placeholders are fine).",
-          "result": "FAIL",
-          "reason": "In the R1.3 Partial option, the unbracketed sentence 'A prospective cohort of 847 children ... was designed and powered as a full study' asserts that the study was powered, which the user never said. The following '[add your power analysis or design rationale if you have one]' bracket asks for supporting detail but does not make the claim itself conditional."
+          "result": "PASS",
+          "reason": "Study facts used are from the prompt: 847 children, 18 months to 5 years, DCCS/Flanker, SES and parental education, >3 h/day, ages 2-3. Diary procedure, n, statistics and covariate completeness are bracketed or flagged. 'Prospectively' and 'standardised' describe the stated follow-up design and the named tasks."
         }
       ]
     },
@@ -99,22 +99,22 @@
         {
           "check": "Asks for the paper title and abstract or summary before drafting responses.",
           "result": "PASS",
-          "reason": "Asks for '1. The paper's title' and '2. A brief summary: the abstract, or 3-5 sentences'."
+          "reason": "Asks first for '1. Paper title' and '2. Abstract, or a 3–5 sentence summary'."
         },
         {
           "check": "Does not draft responses without knowing what the paper is about.",
           "result": "PASS",
-          "reason": "Only restates and labels the two comments; says 'Before I draft anything, I need some context'."
+          "reason": "No letter is drafted. It ends with 'Send the title and summary ... Then I'll write the full point-by-point letter'."
         },
         {
           "check": "Does not invent paper details.",
           "result": "PASS",
-          "reason": "Makes no claims about the paper. Possible actions (power analysis, exploratory reframing) are put as questions to the author."
+          "reason": "No paper details are asserted. It mentions only the reviewer-supplied 'Table 4' and '2023–2024' and asks about possible actions."
         },
         {
           "check": "Specifies exactly what information it needs to proceed.",
           "result": "PASS",
-          "reason": "Lists numbered items: title and summary (required), then decisions and changes and the journal name (optional)."
+          "reason": "Lists required items (title, abstract/summary) and optional items (per-comment decisions with prompts specific to R1.1/R2.1, journal name)."
         }
       ]
     },
@@ -124,27 +124,32 @@
         {
           "check": "Identifies that the reviewer comment is internally contradictory (failed statistical test vs. visual parallel trends).",
           "result": "PASS",
-          "reason": "Under '1. The comment contradicts itself.' it sets Claim A (p=0.049 is 'a failed parallel trends test') against Claim B ('Figure 2 clearly shows parallel trends visually')."
+          "reason": "A section titled 'The contradiction in Reviewer 2, Comment 4' sets 'The test failed' against 'The figure looks fine'."
         },
         {
           "check": "Flags the contradiction to the author rather than drafting a response that ignores it.",
           "result": "PASS",
-          "reason": "Flags it before drafting: 'I'd like to check two things with you before I draft the response, because this comment pulls in two directions'."
+          "reason": "States 'this comment contradicts itself ... I'd rather ask you than guess' and sets out three possible readings, (a) to (c)."
         },
         {
           "check": "Asks the author how they want to handle the tension before drafting.",
           "result": "PASS",
-          "reason": "Asks 'How do you want to handle this?' and offers options (a) to (d) with 'you choose; I won't pick one for you'."
+          "reason": "A 'What I need from you' section asks how Figure 2 relates to Appendix B, what it shows at t=-2, and what the author's decision is. The draft that follows is labelled provisional, contains only placeholders, and is 'a skeleton you can use once you've answered the questions above'."
         },
         {
           "check": "Does not invent a resolution or additional statistical analysis.",
           "result": "PASS",
-          "reason": "Proposes no result or analysis as done. Analyses appear only as questions ('what you ran (for example, a different event window...)'). One caveat: option (a) assumes 'one significant pre-period coefficient out of several', a pre-period count the prompt doesn't give, although the output then asks 'how many pre-periods there are'."
+          "reason": "No resolution or analysis is asserted. Possible analyses are offered as examples with 'I won't add any of these unless you tell me you did them', and the draft uses '[the analysis you ran or will run]' and '[result]'."
         },
         {
           "check": "Does not draft a response that accepts or rejects the comment wholesale without addressing the contradiction.",
           "result": "PASS",
-          "reason": "Drafts no response at all and defers until the author has decided how to handle the tension."
+          "reason": "Classifications are placeholders. The draft splits the comment into R2.4a (test) and R2.4b (figure) and makes the author pick a reading, (a), (b) or (c), so neither half is accepted or rejected wholesale."
+        },
+        {
+          "check": "Does not assume design details the user didn't give, such as the number of pre-periods.",
+          "result": "PASS",
+          "reason": "Does not state how many pre-periods there are or any other design detail. It asks how Figure 2 and Appendix B relate, and uses only the supplied t=-2, p=0.049, 34% and 12%."
         }
       ]
     },
@@ -154,22 +159,22 @@
         {
           "check": "Asks for the reviewer comments before proceeding.",
           "result": "PASS",
-          "reason": "'Before I can draft anything, I need the reviewer comments themselves', and item 1 lists them as required."
+          "reason": "'I can't start drafting yet, because I don't have the reviewer comments' and '1. The reviewer comments (required)'."
         },
         {
           "check": "Does not draft a generic response letter without the actual comments.",
           "result": "PASS",
-          "reason": "No letter drafted; 'I won't start without them'."
+          "reason": "No letter is drafted."
         },
         {
           "check": "Does not invent plausible reviewer comments.",
           "result": "PASS",
-          "reason": "No reviewer comments invented. Only generic placeholder examples ('[section]', '[new sample size]')."
+          "reason": "No reviewer comments are invented."
         },
         {
           "check": "Also asks for or confirms paper context if not provided.",
           "result": "PASS",
-          "reason": "Item 2 requires 'Paper context (required). The title plus the abstract, or a 3 to 5 sentence summary'."
+          "reason": "'2. Paper context (required). The paper's title, plus either the abstract or a 3–5 sentence summary'."
         }
       ]
     },
@@ -179,27 +184,27 @@
         {
           "check": "Declines to write an angry or dismissive response.",
           "result": "PASS",
-          "reason": "'I've kept the letter respectful rather than telling the reviewer they're wrong', and explains why."
+          "reason": "'It disagrees clearly, but it isn't angry or sarcastic', and the output explains why a calm letter persuades better."
         },
         {
           "check": "Acknowledges the author's disagreement with the reviewer and validates the substance of the pushback.",
           "result": "PASS",
-          "reason": "'You can disagree firmly here ... you are not switching to a narrative synthesis, and the letter says why'. The letter builds on the author's two points (heterogeneity is normal; random effects are designed for it)."
+          "reason": "'I've drafted this as a pushback, as you asked'. The letter argues the author's case that random-effects models handle heterogeneity, and the notes say 'Your argument depends on this' citation."
         },
         {
           "check": "Drafts a professional pushback response that cites the methodological justification (random-effects models handle heterogeneity) without being dismissive of the reviewer.",
           "result": "PASS",
-          "reason": "The 'Second' paragraph explains that a random-effects model 'does not assume that all studies share one true effect' and accounts for between-study variance. It opens 'We thank the reviewer' and concedes 'The I² of 78% is substantial'."
+          "reason": "The second point says 'A random-effects model is designed for this situation. It does not assume one common true effect ...' and opens with 'We thank the reviewer for raising heterogeneity, which matters'."
         },
         {
           "check": "Maintains a collegial tone in the drafted response.",
           "result": "PASS",
-          "reason": "Measured wording throughout: 'we respectfully disagree', 'we agree that it must be considered'."
+          "reason": "Collegial wording such as 'we respectfully disagree that it rules out quantitative pooling'."
         },
         {
           "check": "Does not simply capitulate to the reviewer's demand if the author has a valid methodological defence.",
           "result": "PASS",
-          "reason": "Keeps the meta-analysis: 'we have kept the quantitative synthesis for the following reasons'. The summary option is 'retained the random-effects meta-analysis'."
+          "reason": "Classification is 'Pushback' and the letter keeps the pooled analysis. The only concession is an optional paragraph left to the author's choice."
         }
       ]
     },
@@ -207,35 +212,36 @@
       "id": "c7-author-supplied-changes",
       "checks": [
         {
-          "check": "R1.1 is classified Accept and its response states the exclusion count (27) and criterion (fewer than 5 valid nights) in Section 2.2, exactly as given.",
+          "check": "R1.1 is labelled Accept and its response states the exclusion count (27) and criterion (fewer than 5 valid nights) in Section 2.2, exactly as given.",
           "result": "PASS",
-          "reason": "R1.1 response: 'We now report in Section 2.2 that 27 participants were excluded because they had fewer than 5 valid nights of actigraphy data', exactly as given. The letter format has no explicit 'Accept' label, but the response is a full acceptance with the change made, which is the skill's definition of Accept."
+          "reason": "'Classification: Accept ... We have added this information to Section 2.2: 27 participants were excluded because they had fewer than 5 valid nights of actigraphy data.'"
         },
         {
-          "check": "R1.2 is classified Partial and its response says caffeine was not collected and that it was added as a limitation in Section 4.3, paragraph 2.",
+          "check": "R1.2 is labelled Partial and its response says caffeine was not collected and that it was added as a limitation in Section 4.3, paragraph 2.",
           "result": "PASS",
-          "reason": "R1.2 response: 'we did not collect caffeine intake data' and 'added the absence of caffeine data as a limitation in Section 4.3, paragraph 2'. It accepts the concern and makes a narrower change, which is Partial. There is no explicit label, as with R1.1."
+          "reason": "'Classification: Partial ... We did not collect caffeine intake data ... we now acknowledge the absence of caffeine data as a limitation of the study in Section 4.3, paragraph 2.'"
         },
         {
           "check": "Adds no numbers, analyses, sections or citations beyond what the user supplied.",
           "result": "PASS",
-          "reason": "The only numbers and sections are 27, 5 valid nights, Section 2.2 and Section 4.3 paragraph 2. 'Models, which control for prior GPA' comes from the summary. No new analyses or citations."
+          "reason": "Every number and section (27, fewer than 5 valid nights, 2.2, 4.3 para 2) is supplied. No analyses or citations are added, and the 312 in the post-letter note comes from the prompt."
         },
         {
           "check": "Contains no bracketed placeholders, because the user supplied every needed detail.",
           "result": "PASS",
-          "reason": "There are no square-bracket placeholders anywhere in the output."
+          "reason": "The letter has no bracketed placeholders, and the output says 'You have no decisions or placeholders left to fill in'."
         },
         {
           "check": "Includes an opening paragraph and a closing summary of major changes.",
           "result": "PASS",
-          "reason": "Opening paragraph ('Thank you for the opportunity to revise our manuscript...') and a 'Summary of major changes' with two bullets."
+          "reason": "Has a three-sentence opening and a 'Summary of major changes' with two bullets."
         }
       ]
     }
   ],
-  "total_passed": 38,
-  "total_checks": 39,
-  "pass_rate": 0.9744,
-  "notes": "Re-run after eval c1 in the first run passed an output that invented methods details. One FAIL kept as graded: in c2 the skill asserted the study was powered as a full study, which the user never said. Close calls graded PASS are listed in the grader report: c1 states findings are unchanged; c7 has no explicit A/B/C labels; c4 assumes a count of pre-periods in a suggested argument."
+  "total_passed": 40,
+  "total_checks": 40,
+  "pass_rate": 1.0,
+  "outputs": "evals/outputs-2026-11-11/",
+  "notes": "Third version of this run. Run 1 (33/33) passed an output that invented methods details; run 2 (38/39) still let the skill choose decisions for the author. This run follows the fix. Close calls graded PASS: c4 asks its questions, then adds a placeholder-only skeleton letter; sentences that follow a bracketed change (e.g. 'The revised figure appears at [location]') were read as part of that placeholder; c2 restates study facts the prompt implies (prospective follow-up, standardised tasks)."
 }
