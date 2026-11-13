@@ -12,7 +12,7 @@ When an issue is hard to write, the problem is usually upstream of the writing. 
 but not a point. "AI in the workplace" is a topic. "Most teams adopting AI tools are measuring
 the wrong thing" is a point. You can write the second one. The first one produces a blank page.
 
-This is the one-page plan I use to get from topic to point before drafting.
+This is a one-page plan for getting from topic to point before drafting.
 
 ## 1. Sharpen the topic into a claim someone could disagree with
 
