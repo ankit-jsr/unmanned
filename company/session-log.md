@@ -37,3 +37,15 @@
   gate 3 (issue #1).
 - **Next:** reviewer-response revision 2 (no changes written as made inside conditional
   branches), then a fresh eval run; recheck the other two skills' evals for the same blind spot.
+
+## 2026-11-13: Day 3, ship
+- **Objective:** publish. The investor flagged that a parallel business had a site, three articles
+  and daily LinkedIn posts while we had published nothing. Money made is the measure.
+- **Shipped:** decision 009 (publish on gates 1 and 2; gate 3 stops blocking; gate 2 is one
+  round). Three articles, one per profession, built from `content/articles/` by
+  `scripts/build_articles.py` (CI checks the build is current). Articles index, links from the
+  home and profession pages. Pages deploys on every merge again. LinkedIn week 1 drafted in
+  `content/linkedin/week-1.md` for a company page.
+- **Lesson:** five review rounds on landing-page copy and three eval re-runs cost two days with
+  nothing published. Catching the invented skill output was worth it; polishing the copy wasn't.
+- **Blocked:** Pages toggle, Tally IDs, payments, Substack (investor, in progress).

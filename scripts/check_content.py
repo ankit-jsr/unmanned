@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PLACEHOLDER = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 CURRENCY = re.compile(r"(₹|\bRs\.?\s?|\bINR\s?|\$)\s?\d")
 LINK = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
-SKIP_DIRS = {".git", "node_modules", ".venv", "content/rendered"}
+SKIP_DIRS = {".git", "node_modules", ".venv", "content/rendered", "content/articles"}  # articles: links checked in the built site/ HTML
 
 LEDGER_HEADER = ["date", "type", "category", "description", "amount_inr", "counterparty", "evidence"]
 METRICS_HEADER = ["week", "date", "substack_subscribers", "github_stars", "waitlist_signups",
